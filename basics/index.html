@@ -9,7 +9,26 @@
 </head>
 <body>
   <h1>Hello, Vue :)</h1>
+  <div id="app">
 
+    <!-- Data & template -->
+    <p>{{ title }} - {{ author }} - {{ age }} ans</p>
+
+    <!-- Click Event -->
+    <button @click="age++">age +</button>
+    <div @click="title = 'encore et encore du vue'"> change title </div> 
+    <!--<div @click="change"> change title 2</div>-->
+
+    <!-- Conditional rendering -->
+
+    <p v-if="true">Conditional rendering</p>
+    <p v-if="showText">v-if : Conditional rendering2</p>
+    <p v-else="showText">v-else : Conditional rendering2</p>
+
+    <button @click="showEl">Show or Hide element</button>
+
+    <div v-show="showText">v-show</div>
+  </div>
   <script src="./index.js"></script>
 </body>
 </html>
