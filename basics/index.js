@@ -3,19 +3,21 @@ const app = Vue.createApp({
   //template: '<h2>Je suis un template</h2>',
   data() {
     return {
-      title: 'j\'apprend vue js3 ',
-      author: 'Codwerk',
-      age: 25,
-      showText: true
+      x: 0,
+      y: 0
     }
   },
   methods: {
-    change(title) {
-      //this.title = 'encore et encore du vue mais vue js 3'
-      this.title = title
+    handleEvent(e, data) {
+      console.log(e, e.type);
+      if(data) {
+        console.log(data);
+      }
+
     },
-    showEl() {
-      this.showText = !this.showText;
+    handleMousemove(e) {
+      this.x = e.offsetX,
+      this.y = e.offsetY
     }
   }
 });

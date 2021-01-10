@@ -4,30 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue.js Basics</title>
-
   <script src="https://unpkg.com/vue@3.0.2"></script>
+
+  <style>
+    .box {
+      padding: 100px 0;
+      width: 400px;
+      text-align: center;
+      background: #ddd;
+      margin: 20px;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
   <h1>Hello, Vue :)</h1>
   <div id="app">
-
-    <!-- Data & template -->
-    <p>{{ title }} - {{ author }} - {{ age }} ans</p>
-
-    <!-- Click Event -->
-    <button @click="age++">age +</button>
-    <div @click="title = 'encore et encore du vue'"> change title </div> 
-    <!--<div @click="change"> change title 2</div>-->
-
-    <!-- Conditional rendering -->
-
-    <p v-if="true">Conditional rendering</p>
-    <p v-if="showText">v-if : Conditional rendering2</p>
-    <p v-else >v-else : Conditional rendering2</p>
-
-    <button @click="showEl">Show or Hide element</button>
-
-    <div v-show="showText">v-show</div>
+    <!-- Other mouse events -->
+    <div class="box" @mouseover="handleEvent($event, 5)">mouseover (enter)</div>
+    <div class="box" @mouseleave="handleEvent">mouseleave</div>
+    <div class="box" @dblclick="handleEvent">double click</div>
+    <div class="box" @mousemove="handleMousemove"> {{ x }} , {{ y }}</div>
   </div>
   <script src="./index.js"></script>
 </body>
