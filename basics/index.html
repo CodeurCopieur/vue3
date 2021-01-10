@@ -25,6 +25,11 @@
     <div class="box" @mouseleave="handleEvent">mouseleave</div>
     <div class="box" @dblclick="handleEvent">double click</div>
     <div class="box" @mousemove="handleMousemove"> {{ x }} , {{ y }}</div>
+
+    <!-- Outputting lists(v-for) -->
+    <ul>
+      <li v-for="(book, i ) in books" :key="i"> {{ book.title }} {{ book.author }} - {{ i }}</li>
+    </ul>
   </div>
   <script src="./index.js"></script>
 </body>
