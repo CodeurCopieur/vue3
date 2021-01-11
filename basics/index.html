@@ -30,6 +30,11 @@
     <ul>
       <li v-for="(book, i ) in books" :key="i"> {{ book.title }} {{ book.author }} - {{ i }}</li>
     </ul>
+
+    <!-- Attribute binding-->
+    <a :href="url"target="_blank">Portfolio</a>
+
+    <img v-for="(book, i ) in books" :src="book.img" :alt="book.title">
   </div>
   <script src="./index.js"></script>
 </body>
