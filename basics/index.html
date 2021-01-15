@@ -20,6 +20,10 @@
     li.Fav {
       color: blue;
     }
+
+    li.Red {
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -46,6 +50,11 @@
       <li v-for="(book, i ) in books" :key="i" :class=" { Fav: book.isFav }"> {{ book.title }} </li>
     </ul>
 
+    <!-- toggling favs -->
+    <br>
+    <ul>
+      <li v-for="(book, i ) in books" :key="i" :class=" { Red: book.isFav }" @click="toggleClasses(book)"> {{ book.title }} </li>
+    </ul>
 
   </div>
   <script src="./index.js"></script>
