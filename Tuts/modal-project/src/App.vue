@@ -1,5 +1,12 @@
 <template lang="pug">
 h1 {{ title }}
+
+.container
+  input(type="text" ref="name") 
+  br
+  span {{ value }}
+  br
+  button(@click="handleClick") Click me
 </template>
 
 <script>
@@ -9,7 +16,15 @@ export default {
   name: 'App',
   data() {
     return {
-      title: 'Vue JS 3 Tutorial for Beginners'
+      title: 'Vue JS 3 Tutorial for Beginners',
+      value: ''
+    }
+  },
+  methods: {
+    handleClick() {
+      console.log(this.$refs.name.value);
+      this.value = this.$refs.name.value;
+      this.$refs.name.classList.add('test')
     }
   }
 }
