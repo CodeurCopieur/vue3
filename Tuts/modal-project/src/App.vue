@@ -7,13 +7,20 @@ h1 {{ title }}
   span {{ value }}
   br
   button(@click="handleClick") Click me
+
+Modal
+
+
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   name: 'App',
+  components: {
+    Modal
+  },
   data() {
     return {
       title: 'Vue JS 3 Tutorial for Beginners',
@@ -31,6 +38,12 @@ export default {
 </script>
 
 <style lang="scss">
+
+body {
+    margin-left: 0;
+  margin-right: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
