@@ -1,6 +1,7 @@
 <template lang="pug">
 .backdrop
   .modal
+    h1 Modal Title
     p Lorem, ipsum
 </template>
 
@@ -26,6 +27,17 @@
       margin: 100px auto;
       background-color: #fff;
       border-radius: 10px;
+
     }
+  }
+
+  .modal h1 {
+    color: #03cfb4;
+    border: none;
+    padding: 0;
+  }
+
+  .modal p {
+    font-style: normal;
   }
 </style>
