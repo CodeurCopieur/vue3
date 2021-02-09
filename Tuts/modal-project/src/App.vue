@@ -8,7 +8,7 @@ h1 {{ title }}
   br
   button(@click="handleClick") Click me
 
-Modal
+Modal(:header="header" :text="text" theme="sale")
 
 
 </template>
@@ -24,7 +24,9 @@ export default {
   data() {
     return {
       title: 'Vue JS 3 Tutorial for Beginners',
-      value: ''
+      value: '',
+      header: 'Lorem ipsum dolor sit amet 1',
+      text: 'Lorem ipsum dolor sit amet 2'
     }
   },
   methods: {

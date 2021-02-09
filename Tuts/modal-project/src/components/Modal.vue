@@ -1,12 +1,13 @@
 <template lang="pug">
 .backdrop
-  .modal
-    h1 Modal Title
-    p Lorem, ipsum
+  .modal(:class="{ sale: theme === 'sale' }")
+    h1 {{ header }}
+    p {{ text }}
 </template>
 
 <script>
  export default {
+   props: ['header', 'text', 'theme'],
    data: () => {
      return {}
    }
@@ -39,5 +40,9 @@
 
   .modal p {
     font-style: normal;
+  }
+
+  .modal.sale {
+    background: purple;
   }
 </style>
