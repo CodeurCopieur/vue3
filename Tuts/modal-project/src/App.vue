@@ -8,8 +8,10 @@ h1 {{ title }}
   br
   button(@click="handleClick") Click me
 
-Modal(:header="header" :text="text" theme="sale")
+.test(v-if="showModal")
+  Modal(:header="header" :text="text" theme="sale" @close="toggleModal")
 
+button(@click="toggleModal") open Modal
 
 </template>
 
@@ -26,7 +28,8 @@ export default {
       title: 'Vue JS 3 Tutorial for Beginners',
       value: '',
       header: 'Lorem ipsum dolor sit amet 1',
-      text: 'Lorem ipsum dolor sit amet 2'
+      text: 'Lorem ipsum dolor sit amet 2',
+      showModal: false
     }
   },
   methods: {
@@ -34,6 +37,9 @@ export default {
       console.log(this.$refs.name.value);
       this.value = this.$refs.name.value;
       this.$refs.name.classList.add('test')
+    },
+    toggleModal(){
+      this.showModal = !this.showModal
     }
   }
 }

@@ -1,5 +1,5 @@
 <template lang="pug">
-.backdrop
+.backdrop(@click="closeModal")
   .modal(:class="{ sale: theme === 'sale' }")
     h1 {{ header }}
     p {{ text }}
@@ -10,6 +10,11 @@
    props: ['header', 'text', 'theme'],
    data: () => {
      return {}
+   },
+   methods: {
+     closeModal() {
+       this.$emit('close')
+     }
    }
   }
 </script>
@@ -43,6 +48,6 @@
   }
 
   .modal.sale {
-    background: purple;
+    background: pink;
   }
 </style>
