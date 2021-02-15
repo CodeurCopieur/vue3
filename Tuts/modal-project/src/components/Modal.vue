@@ -1,8 +1,9 @@
 <template lang="pug">
-.backdrop(@click="closeModal")
+.backdrop(@click.self="closeModal")
   .modal(:class="{ sale: theme === 'sale' }")
     h1 {{ header }}
     p {{ text }}
+    p self - empeche le clic à l'intérieur de la modal
 </template>
 
 <script>

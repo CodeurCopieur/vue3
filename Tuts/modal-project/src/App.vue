@@ -11,7 +11,7 @@ h1 {{ title }}
 .test(v-if="showModal")
   Modal(:header="header" :text="text" theme="sale" @close="toggleModal")
 
-button(@click="toggleModal") open Modal
+button(@click.shift="toggleModal") open Modal(shift)
 
 </template>
 
