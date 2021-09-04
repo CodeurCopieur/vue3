@@ -41,7 +41,7 @@
                 </div>
             </section>
 
-            <section class="summary">
+            <section class="summary" v-if="total() > 0">
                 <strong>Order Details</strong>
                 <table>
                     <thead>
@@ -61,7 +61,7 @@
                         
                         <tr>
                             <th>Total</th>
-                            <th>5.99</th>
+                            <th>{{ total().toFixed(2) }}</th>
                         </tr>
                     </tbody>
                 </table>
