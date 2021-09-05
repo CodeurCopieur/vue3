@@ -21,7 +21,13 @@ const handlingForms = {
     },
     methods: {
         addMember() {
-            this.members.push(this.newMembers)
+            if (this.newMembers.fname && this.newMembers.lname && this.newMembers.instrument) {
+                this.members.push(this.newMembers);
+                this.newMembers = {};
+            } else {
+                alert('ils faut saisir tous les champs !')
+            }
+            
         }
     }
 
