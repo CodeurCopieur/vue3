@@ -15,9 +15,15 @@ const handlingForms = {
 
     data() {
         return {
-            members
+            members,
+            newMembers: {}
         }
     },
+    methods: {
+        addMember() {
+            this.members.push(this.newMembers)
+        }
+    }
 
 };
 

@@ -40,23 +40,23 @@
 
             <section class="add-more">
                 <p>Add more band members</p>
-                <form>
-                
+                <form @submit.prevent="addMember()">
+
                 <label for="fname">First name:</label><br>
-                <input type="text" id="fname" name="fname"><br>
+                <input type="text" id="fname" name="fname" v-model="newMembers.fname"><br>
                 
                 <label for="lname">Last name:</label><br>
-                <input type="text" id="lname" name="lname"><br>
+                <input type="text" id="lname" name="lname" v-model="newMembers.lname"><br>
 
                 <label for="instrument">Instrument:</label><br>
-                <select name="instrument" id="instrument">
+                <select name="instrument" id="instrument" v-model="newMembers.instrument">
                     <option value="Bass">Bass</option>
                     <option value="Electric Guitar">Electric Guitar</option>
                     <option value="Acoustic Guitar">Acoustic Guitar</option>
                     <option value="Drums">Drums</option>
                     </select>
                     <br><br>
-                <input type="button" value="Add">
+                <input type="submit" value="Add">
                 </form> 
             </section>
 
