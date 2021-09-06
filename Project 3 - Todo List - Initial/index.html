@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>To-Do List</title>
+    </head>
+
+    <body>
+        
+        <main id="app">
+            
+            <section class="todo-list">
+                
+                
+                <h3>To-do List</h3>
+                
+                <div class="all-todos">
+                    <div class="single-todo done">
+                        <p>Learn HTML, CSS and Javascript</p>
+                    </div>
+                    <div class="single-todo done">
+                        <p>Learn the basics of Vue JS</p>
+                    </div>
+                    <div class="single-todo">
+                        <p>Complete Vue JS Challenge with excellence</p>
+                    </div>
+
+                </div>
+
+                <button class="clear">Clear All</button>
+
+                <input type="text" placeholder="Add new to-do">
+                <button class="add">Add</button>
+
+                <div class="instructions">
+                    Instructions:
+                    <ul>
+                        <li>Click the to-do text to toggle between done / undone</li>
+                        <li>Use clear all button to remove all items</li>
+                        <li>Use the input field to add new to-dos</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="scripts.js"></script>
+    </body>
+
+</html>
