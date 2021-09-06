@@ -12,7 +12,20 @@ var todos = [
 const todosApp = {
   data() {
     return {
-      todos
+      todos,
+      newTodo: { done:false }
+    }
+  },
+  methods:{
+    addTodo() {
+
+      if(this.newTodo.text) {
+        this.todos.push(this.newTodo);
+        this.newTodo = { done:false }
+      } else {
+        alert('le texte est nécessaire !')
+      }
+       
     }
   }
 };
