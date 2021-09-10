@@ -5,16 +5,17 @@
       <span>0</span> Computer
     </section>
 
-    <h1 v-html="this.question"></h1>
+    <template v-if="this.question">
+      <h1 v-html="this.question"></h1>
 
-    <input type="radio" value="true">
-    <label for=""> True </label>
-    <br>
-
-    <input type="radio" value="false">
-    <label for=""> false </label>
-    <br>
-    
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <template v-for="(answer, index) in this.answers" :key="index">
+          <input type="radio" name="option" :id="answer" :value="answer">
+          <label :for="answer" v-html="answer"></label>
+          <br>
+        </template>
+      </div>
+    </template>
     <button class="send">Send</button>
   </div>
 </template>
@@ -34,7 +35,6 @@ export default {
     answers() {
       const answers = this.incorrectAnswers;
       answers.splice(Math.round(Math.random() * answers.length) , 0 , this.correctAnswer);
-
       return answers;
     }
   },
