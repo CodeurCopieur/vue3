@@ -30,8 +30,16 @@ export default {
       correctAnswer: undefined
     }
   },
+  computed: {
+    answers() {
+      const answers = this.incorrectAnswers;
+      answers.splice(Math.round(Math.random() * answers.length) , 0 , this.correctAnswer);
+
+      return answers;
+    }
+  },
   methods: {
-    getList(){
+    getQuestion(){
       this.axios.get('https://opentdb.com/api.php?amount=10&category=21').then( response => {
         this.question = response.data.results[0].question;
         this.incorrectAnswers = response.data.results[0].incorrect_answers;
@@ -40,7 +48,7 @@ export default {
     }
   },
   created() {
-    this.getList();
+    this.getQuestion();
   }
 }
 </script>
