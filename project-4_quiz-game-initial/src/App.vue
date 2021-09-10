@@ -5,9 +5,7 @@
       <span>0</span> Computer
     </section>
 
-    <h1>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni dolorum accusamus, vel beatae perspiciatis eos atque iste dicta inventore eligendi repudiandae, alias eveniet sunt minima molestias itaque fugiat veniam ad.
-    </h1>
+    <h1 v-html="this.question"></h1>
 
     <input type="radio" value="true">
     <label for=""> True </label>
@@ -22,12 +20,27 @@
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    //HelloWorld
+  data(){
+    return {
+      question: undefined,
+      incorrectAnswers: undefined,
+      correctAnswer: undefined
+    }
+  },
+  methods: {
+    getList(){
+      this.axios.get('https://opentdb.com/api.php?amount=10&category=21').then( response => {
+        this.question = response.data.results[0].question;
+        this.incorrectAnswers = response.data.results[0].incorrect_answers;
+        this.correctAnswer = response.data.results[0].correct_answer;
+      })
+    }
+  },
+  created() {
+    this.getList();
   }
 }
 </script>
