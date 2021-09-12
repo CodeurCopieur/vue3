@@ -7,16 +7,19 @@
 
     <template v-if="this.question">
       <h1 v-html="this.question"></h1>
-
-      <div style="display: flex; align-items: center; justify-content: center;">
-        <template v-for="(answer, index) in this.answers" :key="index">
-          <input type="radio" name="option" :id="answer" :value="answer">
-          <label :for="answer" v-html="answer"></label>
-          <br>
-        </template>
-      </div>
+      <form @submit.prevent="submitAnswer">
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <template v-for="(answer, index) in this.answers" :key="index">
+            <input type="radio" name="option" :id="answer" :value="answer" v-model="this.chosenAnswer">
+            <label :for="answer" v-html="answer"></label>
+            <br>
+          </template>
+        </div> 
+        
+        <button class="send">Send</button>
+      </form>
     </template>
-    <button class="send">Send</button>
+   
   </div>
 </template>
 
@@ -28,7 +31,8 @@ export default {
     return {
       question: undefined,
       incorrectAnswers: undefined,
-      correctAnswer: undefined
+      correctAnswer: undefined,
+      chosenAnswer: undefined
     }
   },
   computed: {
@@ -39,6 +43,13 @@ export default {
     }
   },
   methods: {
+    submitAnswer() {
+      if(!this.chosenAnswer) {
+        alert('Choisis une réponse !!');
+      } else {
+        this.chosenAnswer == this.correctAnswer ? alert('oui') : alert('non')
+      }
+    },
     getQuestion(){
       this.axios.get('https://opentdb.com/api.php?amount=10&category=21').then( response => {
         this.question = response.data.results[0].question;
