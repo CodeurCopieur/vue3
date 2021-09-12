@@ -10,14 +10,29 @@
       <form @submit.prevent="submitAnswer">
         <div style="display: flex; align-items: center; justify-content: center;">
           <template v-for="(answer, index) in this.answers" :key="index">
-            <input type="radio" name="option" :id="answer" :value="answer" v-model="this.chosenAnswer">
+            <input 
+              type="radio" 
+              name="option" 
+              :id="answer" 
+              :value="answer" 
+              :disabled="this.submittedAnswer"
+              v-model="this.chosenAnswer">
             <label :for="answer" v-html="answer"></label>
             <br>
           </template>
         </div> 
         
-        <button class="send">Send</button>
+        <button v-if="!this.submittedAnswer" class="send">Send</button>
       </form>
+      <section v-if="this.submittedAnswer" class="result">
+        <h4 v-if="this.chosenAnswer == this.correctAnswer">
+          &#9989; Congratulation,the answer "{{this.correctAnswer}}" is correct.
+          </h4>
+        <h4 v-else>
+          &#10060; Désolé, ton choix n'est pas correct. la reponse est "{{this.correctAnswer}}".
+          </h4>
+        <button class="send">Question suivante</button>
+      </section>
     </template>
    
   </div>
@@ -32,7 +47,8 @@ export default {
       question: undefined,
       incorrectAnswers: undefined,
       correctAnswer: undefined,
-      chosenAnswer: undefined
+      chosenAnswer: undefined,
+      submittedAnswer: false
     }
   },
   computed: {
@@ -47,7 +63,8 @@ export default {
       if(!this.chosenAnswer) {
         alert('Choisis une réponse !!');
       } else {
-        this.chosenAnswer == this.correctAnswer ? alert('oui') : alert('non')
+        this.submittedAnswer = !this.submittedAnswer;
+        this.chosenAnswer == this.correctAnswer ? console.log('oui') : console.log('non')
       }
     },
     getQuestion(){
