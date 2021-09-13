@@ -7,7 +7,6 @@
 
     <template v-if="this.question">
       <h1 v-html="this.question"></h1>
-      <form @submit.prevent="submitAnswer">
         <div style="display: flex; align-items: center; justify-content: center;">
           <template v-for="(answer, index) in this.answers" :key="index">
             <input 
@@ -22,16 +21,16 @@
           </template>
         </div> 
         
-        <button v-if="!this.submittedAnswer" class="send">Send</button>
-      </form>
+        <button v-if="!this.submittedAnswer" @click="this.submitAnswer()" type="button" class="send">Send</button>
+
       <section v-if="this.submittedAnswer" class="result">
         <h4 v-if="this.chosenAnswer == this.correctAnswer">
-          &#9989; Congratulation,the answer "{{this.correctAnswer}}" is correct.
+          &#9989; Congratulation, la réponse "<span v-html="this.correctAnswer"></span>" est correcte.
           </h4>
         <h4 v-else>
-          &#10060; Désolé, ton choix n'est pas correct. la reponse est "{{this.correctAnswer}}".
+          &#10060; Désolé, ton choix n'est pas correct. la reponse est "<span v-html="this.correctAnswer"></span>".
           </h4>
-        <button class="send">Question suivante</button>
+        <button @click="this.getQuestion()" type="button" class="send">Question suivante</button>
       </section>
     </template>
    
@@ -68,6 +67,11 @@ export default {
       }
     },
     getQuestion(){
+
+      this.submittedAnswer = false;
+      this.chosenAnswer = undefined;
+      this.question = undefined;
+
       this.axios.get('https://opentdb.com/api.php?amount=10&category=21').then( response => {
         this.question = response.data.results[0].question;
         this.incorrectAnswers = response.data.results[0].incorrect_answers;
