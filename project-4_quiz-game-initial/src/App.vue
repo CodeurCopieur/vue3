@@ -1,9 +1,6 @@
 <template>
   <div>
-    <section class="score">
-      Player <span>0</span> x
-      <span>0</span> Computer
-    </section>
+    <scoreBoard/>
 
     <template v-if="this.question">
       <h1 v-html="this.question"></h1>
@@ -39,8 +36,13 @@
 
 <script>
 
+import ScoreBoard from '@/components/ScoreBoard'
+
 export default {
   name: 'App',
+  components: {
+    ScoreBoard
+  },
   data(){
     return {
       question: undefined,
