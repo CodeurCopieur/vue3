@@ -1,6 +1,6 @@
 <template>
   <div>
-    <scoreBoard/>
+    <scoreBoard :winCount="this.winCount" :loseCount="this.loseCount"/>
 
     <template v-if="this.question">
       <h1 v-html="this.question"></h1>
@@ -49,7 +49,9 @@ export default {
       incorrectAnswers: undefined,
       correctAnswer: undefined,
       chosenAnswer: undefined,
-      submittedAnswer: false
+      submittedAnswer: false,
+      winCount: 0,
+      loseCount: 0
     }
   },
   computed: {
@@ -65,7 +67,7 @@ export default {
         alert('Choisis une réponse !!');
       } else {
         this.submittedAnswer = !this.submittedAnswer;
-        this.chosenAnswer == this.correctAnswer ? console.log('oui') : console.log('non')
+        this.chosenAnswer == this.correctAnswer ? this.winCount++ : this.loseCount++;
       }
     },
     getQuestion(){
