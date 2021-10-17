@@ -8,10 +8,22 @@
 
 <style lang="scss">
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 img{
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+  
+figure {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
 }
 
 #app {
