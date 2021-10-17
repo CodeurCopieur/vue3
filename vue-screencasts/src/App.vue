@@ -7,6 +7,13 @@
 </template>
 
 <style lang="scss">
+
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
