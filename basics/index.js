@@ -16,7 +16,14 @@ const app = Vue.createApp({
           title: 'the final empire', author: 'stan', img: 'https://vignette.wikia.nocookie.net/onepiece/images/8/89/Wiki-wordmark.png/revision/latest?cb=20180401015943&path-prefix=fr', isFav: true
         }
       ],
-      url:'https://codwerk.github.io/'
+      url:'https://codwerk.github.io/',
+      textBrut: 'textBrut',
+      textHTML: '<h1>textHTML</h1>',
+      multi: '',
+      selection: '',
+      hms: '',
+      checkedNames: [],
+      picked: ''
     }
   },
   methods: {
@@ -42,4 +49,8 @@ const app = Vue.createApp({
   }
 });
 
-app.mount('#app')
+let vm = app.mount('#app');
+/*setInterval( ()=> {
+  let d = new Date().toLocaleTimeString();
+  vm.hms = d
+}, 1000)*/
