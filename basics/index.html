@@ -131,6 +131,18 @@
       @click.middle="largeur(150)"
       @click.right="largeur(300)">
 
+    <!-- Arguments dynamiques -->
+
+    <input type="radio" v-model="choix" value="click" checked id="click"> 
+    <label for="click">click</label>
+    <input type="radio" v-model="choix" value="dblclick" id="dblclick"> 
+    <label for="dblclick">dblclick</label>
+    <p>
+      <img 
+        src="https://yt3.ggpht.com/ytc/AAUvwni-Wm0ZBDYJYFwySP2esxgc8s9mKiwmI3yJrmjlHQ=s88-c-k-c0xffffffff-no-rj-mo" 
+        @[choix]="updateWidth"
+        :width="taille">
+    </p>
   </div>
   <script src="./index.js"></script>
 </body>

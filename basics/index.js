@@ -24,7 +24,9 @@ const app = Vue.createApp({
       hms: '',
       checkedNames: [],
       picked: '',
-      valeur: 300
+      valeur: 300,
+      choix: 'click',
+      taille: 50,
     }
   },
   methods: {
@@ -52,6 +54,9 @@ const app = Vue.createApp({
     },
     largeur(lar) {
       this.valeur = lar;
+    },
+    updateWidth(){
+      this.taille = this.taille * 1.1;
     }
   },
   computed: {
