@@ -112,6 +112,25 @@
     <br>
     <span>Choisi : {{ picked }}</span>
 
+
+    <br><br>
+
+    <!-- Les fonctions stopPropagation(), preventDefault() -->
+
+    <div @keydown="actionParent">
+      <input type="text" @keydown="actionChild">
+    </div>
+
+    <br><br>
+    <!-- Suffixes stop et prevent de Vue -->
+
+    <img 
+      src="https://vignette.wikia.nocookie.net/onepiece/images/8/89/Wiki-wordmark.png/revision/latest?cb=20180401015943&path-prefix=fr"
+      :width="valeur"
+      @click.left="largeur(200)"
+      @click.middle="largeur(150)"
+      @click.right="largeur(300)">
+
   </div>
   <script src="./index.js"></script>
 </body>

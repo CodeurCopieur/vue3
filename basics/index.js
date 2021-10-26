@@ -23,7 +23,8 @@ const app = Vue.createApp({
       selection: '',
       hms: '',
       checkedNames: [],
-      picked: ''
+      picked: '',
+      valeur: 300
     }
   },
   methods: {
@@ -34,12 +35,23 @@ const app = Vue.createApp({
       }
 
     },
-    handleMousemove(e) {
-      this.x = e.offsetX,
-      this.y = e.offsetY
+    handleMousemove({offsetX, offsetY}) {
+      this.x = offsetX,
+      this.y = offsetY
     },
     toggleClasses(book){
       book.isFav = !book.isFav;
+    },
+    actionChild(ev){
+      console.log('event traite dans lenfant');
+      //ev.preventDefault();
+      ev.stopPropagation();
+    },
+    actionParent(){
+      console.log('event traite dans le parent');
+    },
+    largeur(lar) {
+      this.valeur = lar;
     }
   },
   computed: {
