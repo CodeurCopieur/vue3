@@ -28,7 +28,8 @@ const app = Vue.createApp({
       choix: 'click',
       taille: 50,
       unLang: '',
-      langages: []
+      langages: [],
+      couleur: 'red'
     }
   },
   methods: {

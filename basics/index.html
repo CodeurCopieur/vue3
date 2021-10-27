@@ -166,7 +166,20 @@
     <input type="text" v-model="unLang">
     <input type="button" value="add" @click="add">
 
-    
+    <br><br><br>
+
+    <!-- Gestion des styles inline -->
+
+    <select v-model="couleur">
+      <option value="red" selected>rouge</option>
+      <option value="black">noir</option>
+      <option value="blue">bleu</option>
+      <option value="green">vert</option>
+    </select>
+
+    <p :style="{color: couleur}">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id enim impedit ipsam sed! Magnam beatae libero voluptatem praesentium, vel hic aliquam voluptatibus repellat!
+    </p>
   </div>
   <script src="./index.js"></script>
 </body>
