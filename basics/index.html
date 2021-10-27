@@ -16,12 +16,20 @@
       display: inline-block;
     }
 
+    li {
+      list-style: none;
+    }
+
 
     li.Fav {
       color: blue;
     }
 
     li.Red {
+      color: red;
+    }
+
+    .rouge {
       color: red;
     }
   </style>
@@ -143,6 +151,22 @@
         @[choix]="updateWidth"
         :width="taille">
     </p>
+
+    <!-- Classes conditionnelles -->
+
+    <p>ton langage pref</p>
+
+    <ul>
+      <li v-for="(langage, i) in langages" :key="i">
+        <input type="checkbox" v-model="langage.etatCases" id="langage.lang">
+        <label :class=" { rouge:langage.etatCases }" for="langage.lang">{{ langage.lang }}</label>
+      </li>
+    </ul>
+
+    <input type="text" v-model="unLang">
+    <input type="button" value="add" @click="add">
+
+    
   </div>
   <script src="./index.js"></script>
 </body>

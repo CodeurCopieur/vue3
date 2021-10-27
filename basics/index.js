@@ -27,6 +27,8 @@ const app = Vue.createApp({
       valeur: 300,
       choix: 'click',
       taille: 50,
+      unLang: '',
+      langages: []
     }
   },
   methods: {
@@ -57,6 +59,14 @@ const app = Vue.createApp({
     },
     updateWidth(){
       this.taille = this.taille * 1.1;
+    },
+    add(){
+      this.langages.push(
+        {
+          etatCases:false,
+          lang: this.unLang
+        }
+      )
     }
   },
   computed: {
