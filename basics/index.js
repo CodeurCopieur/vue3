@@ -29,7 +29,8 @@ const app = Vue.createApp({
       taille: 50,
       unLang: '',
       langages: [],
-      couleur: 'red'
+      couleur: 'red',
+      etat: false
     }
   },
   methods: {

@@ -180,6 +180,14 @@
     <p :style="{color: couleur}">
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id enim impedit ipsam sed! Magnam beatae libero voluptatem praesentium, vel hic aliquam voluptatibus repellat!
     </p>
+
+    <br><br>
+
+    <!-- Afficher du code HTML conditionnellement -->
+
+    <input type="checkbox" v-model="etat">
+    <span v-if="etat">case coché</span>
+    <span v-else>pas cochés</span>
   </div>
   <script src="./index.js"></script>
 </body>
