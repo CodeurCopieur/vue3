@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Challenge 1</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+
+    <style>
+      label {
+        margin-right: 1rem;
+      }
+      .mef {
+        font-size:1.5rem;
+      }
+      img {
+        border: 4px solid #7952B3;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+      }
+
+      .name {
+        margin-bottom: 6px;
+      }
+
+      .job {
+          color: #fa2525;
+          font-weight: 700;
+      }
+
+      .checkboxContainer {
+        display: inline-block;
+        padding-left: 30px;
+        position: relative;
+        cursor: pointer;
+        font-size: 22px;
+      }
+
+      .checkboxContainer input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      
+      .checkboxContainer .checkmark {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #282B3A;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        border-radius: 3px;
+        }
+
+        .checkboxContainer input:checked + .checkmark::after {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 7px;
+          border-left: 3px solid #E6E7E9;
+          border-bottom: 3px solid #E6E7E9;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+    </style>
+
+    <body>
+        
+        <main id="app">
+          <section class="container mt-4">
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-9">
+                <div class="card p-4 mt-3">
+                  <h3>Filtre sur le nom</h3>
+                  <input type="text" v-model="filtreNom">
+                </div>
+              </div>
+
+              <div class="col-lg-9">
+                <h3 class="my-3 text-left">Option</h3>
+                
+                <label for="h" class="checkboxContainer">
+                  homme
+                  <input type="checkbox" checked id="h" v-model="h">
+                  <span class="checkmark"></span>
+                </label>
+                <label for="f" class="checkboxContainer">
+                  femme
+                  <input type="checkbox" checked id="f" v-model="f">
+                  <span class="checkmark"></span>
+                </label>
+                <label for="t" class="checkboxContainer">
+                  tel
+                  <input type="checkbox" checked id="t" v-model="t">
+                  <span class="checkmark"></span>
+                </label>            
+                <br>
+                <select class="form-select mb-2" v-model="taille">
+                  <option value="1">small</option>
+                  <option value="2">petit</option>
+                  <option value="3">grand</option>
+                </select><br>
+                <input type="checkbox" id="mef" v-model="mef">
+                <label for="mef">mise en forme</label><br>
+              </div>
+            </div>
+          </section>
+          
+
+          <section class="container  mt-5">
+            <div class="row">
+               <template 
+                  v-for="(p, i) in personnes" 
+                  :key="i">
+                <div 
+                    v-if="(((h && p.name.title=='Mr') || (f && p.name.title=='Mrs')) && (p.name.last.indexOf(filtreNom)>=0 || filtreNom == ''))"
+                    class="col-lg-4 col-md-6 col-sm-8 mt-5"
+                    >
+                    <div class="card bg-white d-flex align-items-center justify-content-center">
+                    <div class="w-100">
+                      <img v-if="taille == 1" :src="p.picture.thumbnail" class="rounded-circle">
+                      <img v-else-if="taille == 2" :src="p.picture.medium" class="rounded-circle">
+                      <img v-else="taille == 3" :src="p.picture.large" class="rounded-circle">
+                    </div>
+                    <div class="text-center" :class="{mef : mef}" style="padding-top: 90px">
+                        <span class="name">{{ p.name.title }} </span>  
+                        <span class="name"> {{ p.name.first }} </span>
+                        <span class="name"> {{ p.name.last }}</span> <br>
+                        <p class="name" v-if="t">{{ p.phone}} </p> 
+                        <p class="job">{{ p.location.country}}</p>
+                    </div>
+                </div>
+              </template  >
+            </div>
+           
+          </div>
+          </section>
+          
+        </main>
+
+        <script src="./index.js"></script>
+    </body>
+
+</html>
