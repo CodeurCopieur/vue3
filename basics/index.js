@@ -30,7 +30,8 @@ const app = Vue.createApp({
       unLang: '',
       langages: [],
       couleur: 'red',
-      etat: false
+      etat: false,
+      total: 0
     }
   },
   methods: {
@@ -69,6 +70,12 @@ const app = Vue.createApp({
           lang: this.unLang
         }
       )
+    },
+    disBonjour() {
+      alert('dit bonjour')
+    },
+    plusUn() {
+      this.total++;
     }
   },
   computed: {
@@ -77,6 +84,31 @@ const app = Vue.createApp({
     }
   }
 });
+
+app.component('bievenue', {
+  template: '<input type="button" @click="coucou" value="Click" />',
+  methods: {
+    coucou() {
+      this.$emit('coucou')
+    }
+  }
+})
+
+
+app.component('compteur', {
+  data() {
+    return {
+      valeur: 0
+    }
+  },
+  methods: {
+    addOne(){
+      this.valeur++;
+      this.$emit('incre')
+    }
+  },
+  template: '<button @click="addOne"> {{valeur}}</button>'
+})
 
 let vm = app.mount('#app');
 /*setInterval( ()=> {

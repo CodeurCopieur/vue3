@@ -188,6 +188,20 @@
     <input type="checkbox" v-model="etat">
     <span v-if="etat">case coché</span>
     <span v-else>pas cochés</span>
+
+
+    <br><br>
+
+    <!-- Custom-events - Envoi de messages au parent par un composant avec $emit -->
+
+    <bievenue @coucou="disBonjour"></bievenue>
+
+    <br><br>
+
+    {{total}}
+    <compteur @incre="plusUn"></compteur>
+    <compteur @incre="plusUn"></compteur>
+    <compteur @incre="plusUn"></compteur>
   </div>
   <script src="./index.js"></script>
 </body>
