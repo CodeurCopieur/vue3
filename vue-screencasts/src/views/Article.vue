@@ -4,11 +4,22 @@
       <div class="component__content">
         <article class="component__wrap-details">
 
-          <figure>
+          <!--<video-player  class="video-player-box"
+                 ref="videoPlayer"
+                 :options="playerOptions">
+          </video-player> -->
+          <div class="component__wrap-video">
+            <video controls :poster="video.thumbnail">
+            <source :src="video.videoUrl" type="video/mp4">
+          </video>
+          </div>
+          
+
+          <!--<figure>
             <picture class="component__wrap-image">
               <img :src="video.thumbnail" alt="">
             </picture>
-          </figure>
+          </figure>-->
           
           <h1>{{ video.name }}</h1>
           <p>{{ this.$route.params.id }}</p>
@@ -25,11 +36,29 @@
   
 </template>
 <script>
+import 'video.js/dist/video-js.css'
+ 
+//import { videoPlayer } from 'vue-video-player'
+
 export default {
+  /*components: {
+    videoPlayer
+  },*/
   computed: {
     video() {
       return this.$store.state.videos.find( video => video.id == this.$route.params.id)
-    }
+    },
+    /*playerOptions() {
+      return {
+        language: 'en',
+          playbackRates: [0.7, 1.0, 1.5, 2.0],
+          sources: [{
+            type: "video/mp4",
+            src: this.video.videoUrl
+          }],
+          poster: this.video.thumbnail,
+      }
+    }*/
   }
 }
 </script>
@@ -50,7 +79,7 @@ export default {
     padding-top: ($height / $width) * 100%;
   }
 
-  img {
+  img,video {
     position: absolute;
     top: 0;
     left: 0;
@@ -73,7 +102,7 @@ export default {
     width: 60%;
   }
 
-  .component__wrap-image{
+  .component__wrap-image, .component__wrap-video{
     @include aspect-ratio(16, 9);
   }
 
