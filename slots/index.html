@@ -11,13 +11,21 @@
 </head>
 <body>
   <main id="app">
-    <h1>Slot Simple</h1>
-    <span>Passer des données à un composant avec des slots</span>
+    <h1>Slot simple</h1>
     <test></test>
-    <test>Test de remplacement</test>
+    <test>Component sans props</test>
 
-    <art title="test slot 1"></art>
-    <art title="test slot 2"><p>paragraphe slot 2</p></art>
+    <art title="Component avec props 1"></art>
+    <art title="Component avec props 2"><p>props slot 2</p></art>
+
+    <h1>Slot nommés</h1>
+    <slotnommes title="Slot nommés">
+      <template v-slot:texte><!-- ou #texte -->
+          <p>Text</p>
+      </template>
+      <p>text 2</p>
+    </slotnommes>
+    <slotnommes title="Slot nommés"></slotnommes>
   </main>
 
   <script src="./index.js"></script>
