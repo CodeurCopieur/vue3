@@ -30,7 +30,10 @@ const app = {
         text: '' ,
         count: 1,
         word:'',
-        message: ''
+        message: '',
+        requete: '',
+        affiche: false,
+        t: null
       }
   },
   computed:{
@@ -54,6 +57,17 @@ const app = {
     },
     word(val) {
       val.indexOf('ici')!=-1 ? this.message="le mot ici identifier" : this.message ="";
+    },
+    requete(val){
+      
+      if(this.affiche) {
+        clearTimeout(t);
+      }
+      
+      this.affiche = true;
+      t = setTimeout(()=> {
+        this.affiche = false
+      }, 3000)
     }
   },
   created(){

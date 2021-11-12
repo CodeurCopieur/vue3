@@ -44,6 +44,12 @@
     <br><br>
     <input type="text" v-model="word">
     <span>{{message}}</span>
+
+    <br><br>
+    <h1>Requêtes asynchrones dans un observateur</h1>
+    
+    <input type="text" v-model="requete">
+    <span v-show="affiche">Frappe en cours...</span>
   </main>
 
   <script src="./index.js"></script>
