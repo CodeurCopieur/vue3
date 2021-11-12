@@ -26,11 +26,22 @@ const app = {
   },
   data() {
       return {
-        users: [] 
+        users: [],
+        text: '' 
       }
   },
-  methods:{
+  computed:{
+    capitalize() {
+      const t = this.text.split(' ');
+      for (let i = 0; i < t.length; i++) {
+        t[i] = t[i].slice(0, 1).toUpperCase() + t[i].slice(1);
+      }
 
+      return t.join(' ');
+    },
+    textReverse() {
+      return this.text.split('').reverse().join('')
+    }
   },
   created(){
     axios.get('https://randomuser.me/api/?nat=fr&results=5')
