@@ -22,4 +22,21 @@ app.component('slotnommes', {
   props: ['title']
 })
 
+app.component('employes', {
+  template:`
+  <div v-for="user in users">
+    <slot :user="user"></slot>
+  </div>
+  `,
+  data() {
+    return {
+      users: []
+    }
+  },
+  created(){
+    axios.get('https://randomuser.me/api/?nat=fr&results=2')
+    .then( ({data}) => { this.users = data.results;})
+  }
+})
+
 app.mount('#app');

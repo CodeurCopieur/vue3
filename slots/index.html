@@ -26,6 +26,14 @@
       <p>text 2</p>
     </slotnommes>
     <slotnommes title="Slot nommés"></slotnommes>
+
+    <h1>Slots avec portée (scoped slots)</h1>
+
+    <employes>
+      <template v-slot="slotUser"><!-- ou #texte -->
+        <p>{{slotUser.user.name.first}} {{slotUser.user.name.last}}</p>
+    </template>
+    </employes>
   </main>
 
   <script src="./index.js"></script>
