@@ -27,7 +27,10 @@ const app = {
   data() {
       return {
         users: [],
-        text: '' 
+        text: '' ,
+        count: 1,
+        word:'',
+        message: ''
       }
   },
   computed:{
@@ -43,9 +46,21 @@ const app = {
       return this.text.split('').reverse().join('')
     }
   },
+  watch: {
+    count(val) {
+      if(val == 10) {
+        this.count = 0
+      }
+    },
+    word(val) {
+      val.indexOf('ici')!=-1 ? this.message="le mot ici identifier" : this.message ="";
+    }
+  },
   created(){
     axios.get('https://randomuser.me/api/?nat=fr&results=5')
-    .then( ({data}) => { console.log(data.results); this.users = data.results;})
+    .then( ({data}) => { 
+      this.users = data.results;
+    });
   }
 };
 

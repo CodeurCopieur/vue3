@@ -32,11 +32,18 @@
     <h1>Organiser une application en hiérarchie de composants</h1>
     <tous :persons="users"></tous>
 
-
     <h1>Filtre</h1>
     <input type="text" v-model="text">
     <p>{{capitalize}}</p>
     <p>{{textReverse}}</p>
+
+    <h1>Observateurs(watchers)</h1>
+    <span>{{count}}</span>
+    <button @click="count++">plusUn</button>
+
+    <br><br>
+    <input type="text" v-model="word">
+    <span>{{message}}</span>
   </main>
 
   <script src="./index.js"></script>
