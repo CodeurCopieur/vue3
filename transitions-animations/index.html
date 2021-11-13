@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .a-enter-from, .a-leave-to {
+      opacity: 0;
+    }
+
+    .a-enter-active,.a-leave-active {
+      transition: opacity .5s ease-in;
+    } 
+  </style>
+</head>
+<body>
+
+  <main id="app">
+
+    <button @click="visible=!visible">
+        <span v-if="visible">Cacher</span>
+        <span v-else>Afficher</span>
+    </button>
+
+    <transition name="a">
+      <div v-if="visible">
+        <img src="https://vignette.wikia.nocookie.net/onepiece/images/8/89/Wiki-wordmark.png/revision/latest?cb=20180401015943&path-prefix=fr" alt="">
+      </div>
+    </transition>
+
+  </main>
+
+  <script src="./index.js"></script>
+</body>
+</html>
