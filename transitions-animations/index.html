@@ -37,6 +37,15 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
+
+
+    .fade-enter-from, .fade-leave-to {
+      opacity: 0;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 2s ease-in;
+    } 
   </style>
 </head>
 <body>
@@ -86,7 +95,19 @@
       <h1 v-else="anime>3" key="t4">Text 4</h1>
     </transition>
   </div>
+
+  <br><br><br>
+  <h1>Transitions de listes</h1>
+
+  <input type="text" v-model="value">
+  <input type="button" value="ajouter" @click="ajouter"><br>
+  <input type="button" value="supprimer" @click="supprimer"><br>
   
+  <transition-group name="fade">
+    <li v-for="fruit in fruits" :key="fruit">
+        <span>{{fruit}}</span>
+    </li>
+  </transition-group>
   </main>
 
   <script src="./index.js"></script>

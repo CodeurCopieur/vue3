@@ -3,8 +3,19 @@ const app = {
       return {
         visible: true,
         opacity: true,
-        anime: 1
+        anime: 1,
+        value: '',
+        fruits: ['fruit 1', 'fruit 2', 'fruit 3']
       }
+  },
+  methods: {
+    ajouter() {
+      this.fruits.push(this.value);
+      this.value = '';
+    },
+    supprimer() {
+      this.fruits.shift();
+    }
   }
 };
 
