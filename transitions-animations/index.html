@@ -14,6 +14,14 @@
     .a-enter-active,.a-leave-active {
       transition: opacity .5s ease-in;
     } 
+
+    .b-enter-from, .b-leave-to {
+      opacity: 0;
+    }
+
+    .b-enter-active, .b-leave-active {
+      transition: opacity .5s ease-in;
+    } 
   </style>
 </head>
 <body>
@@ -30,6 +38,23 @@
         <img src="https://vignette.wikia.nocookie.net/onepiece/images/8/89/Wiki-wordmark.png/revision/latest?cb=20180401015943&path-prefix=fr" alt="">
       </div>
     </transition>
+
+    <br><br><br><br>
+
+    <button @click="opacity=!opacity">
+      <span v-if="opacity">Afficher text 2</span>
+      <span v-else>Afficher text 1</span>
+  </button>
+
+  <!-- in-out ou out-in -->
+  <transition name="b" mode="in-out">
+    <div v-if="opacity" key="1">
+      <span>Test 2</span>
+    </div>
+    <div v-else key="2">
+      <span>Test 1</span>
+    </div>
+  </transition>
 
   </main>
 

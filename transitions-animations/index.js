@@ -1,7 +1,8 @@
 const app = {
   data() {
       return {
-        visible: true
+        visible: true,
+        opacity: true
       }
   }
 };
