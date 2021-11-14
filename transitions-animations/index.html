@@ -5,6 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <script src="https://unpkg.com/vue@next"></script>
   <style>
     .a-enter-from, .a-leave-to {
@@ -108,6 +112,16 @@
         <span>{{fruit}}</span>
     </li>
   </transition-group>
+
+  <br><br><br>
+  <h1>Transitions d'entrée et de sortie avec animate.css</h1>
+
+  <button @click="animate=!animate">Click</button>
+  <transition 
+    enter-active-class="animate__animated animate__bounce"
+    leave-active-class="animate__animated animate__zoomIn">
+    <h1 v-if="animate">Animate.css</h1>
+  </transition>
   </main>
 
   <script src="./index.js"></script>

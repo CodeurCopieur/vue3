@@ -5,7 +5,8 @@ const app = {
         opacity: true,
         anime: 1,
         value: '',
-        fruits: ['fruit 1', 'fruit 2', 'fruit 3']
+        fruits: ['fruit 1', 'fruit 2', 'fruit 3'],
+        animate: false
       }
   },
   methods: {
