@@ -22,11 +22,28 @@
     .b-enter-active, .b-leave-active {
       transition: opacity .5s ease-in;
     } 
+
+    .c-enter-from, .c-leave-to {
+      opacity: 0;
+    }
+
+    .c-enter-active, .c-leave-active {
+      transition: opacity 2s ease-in;
+    } 
+
+    .test h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   </style>
 </head>
 <body>
 
   <main id="app">
+
+    <h1>Transitions d'entrée et de sortie</h1>
 
     <button @click="visible=!visible">
         <span v-if="visible">Cacher</span>
@@ -39,7 +56,8 @@
       </div>
     </transition>
 
-    <br><br><br><br>
+    <br><br><br>
+    <h1>Transitions d'entrée et de sortie non simultanées</h1>
 
     <button @click="opacity=!opacity">
       <span v-if="opacity">Afficher text 2</span>
@@ -56,6 +74,19 @@
     </div>
   </transition>
 
+  <br><br><br>
+  <h1>Transitions entre éléments</h1>
+  <button @click="anime<4?anime++:anime=1">Animer: {{anime}}</button>
+
+  <div class="test" style="position: relative; height: 100px;">
+    <transition name="c">
+      <h1 v-if="anime==1" key="t1">Text 1</h1>
+      <h1 v-else-if="anime==2" key="t2">Text 2</h1>
+      <h1 v-else-if="anime==3" key="t3">Text 3</h1>
+      <h1 v-else="anime>3" key="t4">Text 4</h1>
+    </transition>
+  </div>
+  
   </main>
 
   <script src="./index.js"></script>

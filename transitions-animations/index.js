@@ -2,7 +2,8 @@ const app = {
   data() {
       return {
         visible: true,
-        opacity: true
+        opacity: true,
+        anime: 1
       }
   }
 };
