@@ -4,7 +4,7 @@
 
     <section class="component-videos">
       <div class="component-videos__container">
-        <cardVideo v-for="(video, i) in videos" :key="i" :article="video" />
+        <VideoListVideo v-for="(video, i) in videos" :key="i" :video="video" />
       </div>
     </section>
 
@@ -13,12 +13,12 @@
 
 <script>
 
-import cardVideo from '@/components/article'
+import VideoListVideo from '@/components/VideoListVideo'
 
 export default {
   name: 'Home',
   components: {
-    cardVideo
+    VideoListVideo
   },
   data() {
     return {

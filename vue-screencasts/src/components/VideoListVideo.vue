@@ -1,13 +1,13 @@
 <template>
   <article class="component-videos__card">
-      <router-link :to="{name: 'article', params: { id:article.id}}">
+      <router-link :to="{name: 'video-watch', params: { id:video.id}}">
         <figure>
           <picture class="component-videos__wrap-image">
-            <img :src="article.thumbnail" alt="">
+            <img :src="video.thumbnail" alt="">
           </picture>
         </figure>
-        <h3>{{ article.name }}</h3>
-        <div v-html="article.description"></div>
+        <h3>{{ video.name }}</h3>
+        <div v-html="video.description"></div>
       </router-link>
   </article>
 
@@ -15,8 +15,8 @@
 
 <script>
 export default {
-  name: 'cardVideo',
-  props: ['article']
+  name: 'VideoListVideo',
+  props: ['video']
 
 }
 </script>

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Article from '../views/Article.vue'
+import VideoWatch from '../views/VideoWatch.vue'
 
 const routes = [
   {
@@ -17,9 +17,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/article/:id',
-    name: 'article',
-    component: Article,
+    path: '/video/:id',
+    name: 'video-watch',
+    component: VideoWatch,
     params: true
   },
 ]

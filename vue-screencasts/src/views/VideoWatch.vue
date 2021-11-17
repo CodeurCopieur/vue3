@@ -10,8 +10,8 @@
           </video-player> -->
           <div class="component__wrap-video">
             <video controls :poster="video.thumbnail">
-            <source :src="video.videoUrl" type="video/mp4">
-          </video>
+              <source :src="video.videoUrl" type="video/mp4">
+            </video>
           </div>
           
 
