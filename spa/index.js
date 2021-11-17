@@ -4,7 +4,7 @@ const page1 = {
 /* Définir des indications de navigateur par Composant */
 const page2 = {
   template: '<div> page 2</div>',
-  beforeRouteEnter: (to, from, next) => {
+  /*beforeRouteEnter: (to, from, next) => {
     // Avant la confirmation de route
   },
   beforeRouteUpdate: (to, from, next) => {
@@ -12,7 +12,7 @@ const page2 = {
   },
   beforeRouteLeave: (to, from, next) => {
     // Juste avant la changement de route
-  }
+  }*/
 }
 
 const page3 = {
@@ -33,11 +33,11 @@ const router = VueRouter.createRouter({
     {
       path: '/page3',
       component: page3,
-      beforeEnter: (to, from, next) =>{
+      /*beforeEnter: (to, from, next) =>{
         console.log(to, from);
         next(false);
-        /* Définir des indications de navigateur par route */
-      }
+        //Définir des indications de navigateur par route
+      }*/
     }
   ]
 });

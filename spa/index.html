@@ -8,6 +8,18 @@
   <script src="https://unpkg.com/vue@next"></script>
   <script src="https://unpkg.com/vue-router@next"></script>
 </head>
+
+<style>
+
+   .fade-enter-from , .fade-leave-to {
+    opacity: 0;
+  }
+
+  .fade-enter-active , .fade-leave-active {
+    transition: opacity .3s ease;
+  }
+
+</style>
 <body>
   <div id="app">
     <h1>Single Page Application</h1>
@@ -18,8 +30,12 @@
         <li><router-link to="/page3">Page 3</router-link></li>
       </ul>
     </nav>
-
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    
   </div>
 
   <script src="./index.js"></script>
