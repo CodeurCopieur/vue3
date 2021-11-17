@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://unpkg.com/vue-router@next"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Single Page Application</h1>
+    <nav>
+      <ul>
+        <li><router-link to="/">Page 1</router-link></li>
+        <li><router-link to="/page2">Page 2</router-link></li>
+        <li><router-link to="/page3">Page 3</router-link></li>
+      </ul>
+    </nav>
+
+    <router-view></router-view>
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+</html>
