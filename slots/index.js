@@ -1,5 +1,28 @@
 
-const app = Vue.createApp({});
+
+const rendu = {
+  template: `
+  <div>
+    <h1>Avant</h1>
+    <header>
+      <slot name="texte">header : Text par défaut</slot>
+    </header>
+    <main>
+      <slot name="default">main : Text par défaut</slot>
+    </main>
+    <footer>
+      <slot name="bas"></slot>
+    </footer>
+  </div>
+  `
+};
+
+
+const app = Vue.createApp({
+  components: {
+    rendu
+  },
+});
 app.component('test', {
   template: '<div><slot>Text par défaut</slot></div>'
 })
@@ -38,5 +61,7 @@ app.component('employes', {
     .then( ({data}) => { this.users = data.results;})
   }
 })
+
+
 
 app.mount('#app');
