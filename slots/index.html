@@ -34,8 +34,37 @@
         <p>{{slotUser.user.name.first}} {{slotUser.user.name.last}}</p>
     </template>
     </employes>
+
+    
+
+    <rendu>
+      <template v-slot:texte><!-- ou #texte -->
+          <p>Text</p>
+      </template>
+      <slot name="default"></slot>
+      <template v-slot:bas>
+        <p>footer : Text par défaut</p>
+      </template>
+    </rendu>
+    
+    <h1>Fonctions de rendu (Render Functions)</h1>
+
   </main>
 
+  <div id="main">
+    
+    <test>
+      <template v-slot:titre><!-- ou #texte -->
+        <p>Titre</p>
+      </template>
+      <p>texte</p>
+      <template v-slot:bas>
+        <p>footer : Text par défaut</p>
+      </template>
+    </test>
+  </div>
+
   <script src="./index.js"></script>
+  <script src="./main.js"></script>
 </body>
 </html>
