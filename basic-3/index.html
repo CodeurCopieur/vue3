@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates vs render functions & JSX</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <titre niveau="1">Titre de niveau 1</titre>
+        <titre niveau="2">Titre de niveau 2</titre>
+        <titre niveau="3">Titre de niveau 3</titre>
+    </div>
+    <script>
+        const Titre = {
+            /*template: `<div>
+                            <h1 v-if='niveau==1'>
+                                <slot></slot>
+                            </h1>    
+                            <h2 v-else-if='niveau==2'>
+                                <slot></slot>
+                            </h2>    
+                            <h3 v-else-if='niveau==3'>
+                                <slot></slot>
+                            </h3>
+                        </div>`,*/
+            render() {
+                return h('h'+this.niveau, {}, this.$slots.default())
+            },
+            props: ['niveau']            
+        }
+        const {h} = Vue;
+        const app = Vue.createApp({
+            components: {
+                'titre': Titre
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
