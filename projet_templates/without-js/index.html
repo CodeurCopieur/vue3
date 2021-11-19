@@ -216,32 +216,8 @@ CSS
             </div>
             <div class="row">
                 <div class="screenshot_slider owl-carousel" id="screenshot-carusel">
-                    <div class="item">
-                        <img src="img/screen/screen1.jpg" alt="" title="">
-                    </div>
-                    <div class="item">
-                        <img src="img/screen/screen2.jpg" alt="" title="">
-                    </div>
-                    <div class="item">
-                        <img src="img/screen/screen3.jpg" alt="" title="">
-                    </div>
-                    <div class="item">
-                        <img src="img/screen/screen4.jpg" alt="" title="">
-                    </div>
-                    <div class="item">
-                        <img src="img/screen/screen5.jpg" alt="" title="">
-                    </div>
-                    <div class="item">
-                        <img src="img/screen/screen6.jpg" alt="" title="">
-                    </div>
-                    <div class="item">
-                        <img src="img/screen/screen7.jpg" alt="" title="">
-                    </div>
-                    <div class="item">
-                        <img src="img/screen/screen1.jpg" alt="" title="">
-                    </div>
-                    <div class="item">
-                        <img src="img/screen/screen2.jpg" alt="" title="">
+                    <div v-for="n in 7"class="item">
+                        <img :src="'img/screen/screen'+n+'.jpg'" alt="" title="">
                     </div>
                 </div>
             </div>
