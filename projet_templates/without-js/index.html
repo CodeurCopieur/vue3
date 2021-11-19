@@ -242,30 +242,14 @@ CSS
                 </div>
                 <div class="col-lg-7">
                     <dl class="accordion">
-                        <dt>
-                            <a href="#" class="active">Started several mistake joy say painful removed reached end.</a>
-                        </dt>
-                        <dd>
-                            Far curiosity incommode now led smallness allowance. Favour bed assure son things yet. She
-                            consisted consulted elsewhere happiness disposing household any old the. Widow downs you
-                            new shade drift hopes small. So otherwise commanded sweetness we improving.
-                        </dd>
-                        <dt>
-                            <a href="#">Although moreover mistaken kindness me feelings do be marianne?</a>
-                        </dt>
-                        <dd>
-                            Far curiosity incommode now led smallness allowance. Favour bed assure son things yet. She
-                            consisted consulted elsewhere happiness disposing household any old the. Widow downs you
-                            new shade drift hopes small. So otherwise commanded sweetness we improving.
-                        </dd>
-                        <dt>
-                            <a href="#">By in no ecstatic wondered disposal my speaking?</a>
-                        </dt>
-                        <dd>
-                            Far curiosity incommode now led smallness allowance. Favour bed assure son things yet. She
-                            consisted consulted elsewhere happiness disposing household any old the. Widow downs you
-                            new shade drift hopes small. So otherwise commanded sweetness we improving.
-                        </dd>
+                        <template v-for="(question, i) in questions" :key="i">
+                            <dt @click="currentQuestion = i" class="pointerElement">
+                                <a :class="{active: currentQuestion == i}">{{ question.sentence }} </a>
+                            </dt>
+                            <dd :class="{active: currentQuestion == i}">
+                                {{ question.answer }}
+                            </dd>
+                        </template>
                     </dl>
                 </div>
             </div>

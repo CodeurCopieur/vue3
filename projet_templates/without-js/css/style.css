@@ -3040,4 +3040,17 @@ td, th {
   color: #691cff;
 }
 
+/* CUSTOM */
 
+.pointerElement {cursor: pointer;}
+.accordion dd { 
+  opacity: 0; visibility: hidden; height: 0; padding: 0 20px;
+  transition: all .3s ease;
+}
+
+.accordion dd.active {
+  opacity: 1; 
+  visibility: visible; 
+  height: auto; 
+  padding: 10px 20px 20px;
+}
