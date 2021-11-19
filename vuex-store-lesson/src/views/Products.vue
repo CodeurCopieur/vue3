@@ -40,4 +40,12 @@ export default {
   max-width: 600px;
   margin: 0 auto;
 }
+
+.movie__star {
+  text-shadow: 0 0 8px #ffdc188c, 0 0 16px #ffffff54;
+}
+.movie__star--dark {
+  opacity:0.5;
+  text-shadow: none;
+}
 </style>

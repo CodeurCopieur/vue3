@@ -10,7 +10,7 @@
         :style="{backgroundImage: 'url(\'' + product.image + '\')'}"/>
       <h2 class="product__title">{{ product.title}}</h2>
       <div class="product__note">
-
+        <span v-for="i in 5" :key="i" :class="{'product__star': true, 'product__star--dark' : i > Math.floor(product.rating.rate)}">⭐</span>
       </div>
     </router-link>
   </article>
@@ -54,5 +54,13 @@ export default {
     white-space: wrap;
     overflow: hidden;
     color:white;
+  }
+
+  .product__star {
+    text-shadow: 0 0 8px #ffdc188c, 0 0 16px #ffffff54;
+  }
+  .product__star--dark {
+    opacity:0.5;
+    text-shadow: none;
   }
 </style>

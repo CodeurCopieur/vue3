@@ -1,6 +1,8 @@
 import { createStore } from 'vuex'
 import axios from "axios"
 
+import { SET_NOTE } from './mutation-types';
+
 export default createStore({
   state: {
     currentProduct: {},
@@ -20,6 +22,9 @@ export default createStore({
     },
     loadProducts (state, products) {
       state.products = products;
+    },
+    [SET_NOTE] (state, rate) {
+      state.currentProduct.rating.rate = rate;
     }
   },
   actions: {
