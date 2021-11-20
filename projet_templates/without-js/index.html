@@ -31,7 +31,7 @@ CSS
     <link rel="stylesheet" href="css/responsive.css">
 
     <!-- Vue.js -->
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
 
 </head>
 
@@ -142,36 +142,18 @@ CSS
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-lg-6 cl">
+                        <div 
+                            v-for="(product, i) in products" 
+                            v-if="i < 3"
+                            :class="i == 2 ? 'col-lg-12':'col-lg-6'"
+                            class="cl">
                             <div class="single-portfolio">
-                                <img alt="" class="img-fluid" src="img/portfolio1.jpg">
+                                <img alt="" class="img-fluid" :src="product.img">
                                 <div class="box-content">
                                     <a href="single-portfolio.html">
-                                        <h5 class="title">Nom du produit</h5>
+                                        <h5 class="title">{{ product.name }}</h5>
                                     </a>
-                                    <span class="post">Produit 1</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 cl">
-                            <div class="single-portfolio">
-                                <img alt="" class="img-fluid" src="img/portfolio2.jpg">
-                                <div class="box-content">
-                                    <a href="single-portfolio.html">
-                                        <h5 class="title">Nom du produit</h5>
-                                    </a>
-                                    <span class="post">Produit 2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="single-portfolio">
-                                <img alt="" class="img-fluid" src="img/portfolio3.jpg">
-                                <div class="box-content">
-                                    <a href="single-portfolio.html">
-                                        <h5 class="title">Nom du produit</h5>
-                                    </a>
-                                    <span class="post">Produit 3</span>
+                                    <span class="post">Produit {{ i+1}}</span>
                                 </div>
                             </div>
                         </div>
@@ -179,25 +161,17 @@ CSS
                 </div>
                 <div class="col-lg-6">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div 
+                            v-for="(product, i) in products" 
+                            v-if="i >= 3"
+                            class="col-lg-12">
                             <div class="single-portfolio">
-                                <img alt="" class="img-fluid" src="img/portfolio4.jpg">
+                                <img alt="" class="img-fluid" :src="product.img">
                                 <div class="box-content">
                                     <a href="single-portfolio.html">
-                                        <h5 class="title">Nom du produit</h5>
+                                        <h5 class="title">{{ product.name }}</h5>
                                     </a>
-                                    <span class="post">Produit 4</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="single-portfolio">
-                                <img alt="" class="img-fluid" src="img/portfolio5.jpg">
-                                <div class="box-content">
-                                    <a href="single-portfolio.html">
-                                        <h5 class="title">Nom du produit</h5>
-                                    </a>
-                                    <span class="post">Produit 5</span>
+                                    <span class="post">Produit {{ i+1}}</span>
                                 </div>
                             </div>
                         </div>
@@ -242,7 +216,7 @@ CSS
                 </div>
                 <div class="col-lg-7">
                     <dl class="accordion">
-                        <template v-for="(question, i) in questions" :key="i">
+                        <template v-for="(question, i) in questions">
                             <dt @click="currentQuestion = i" class="pointerElement">
                                 <a :class="{active: currentQuestion == i}">{{ question.sentence }} </a>
                             </dt>

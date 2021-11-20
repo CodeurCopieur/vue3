@@ -13,7 +13,7 @@ let questions = [
       }
   ];
 
-let data = [
+let products = [
   {
       name: 'Titre du produit 1',
       img: 'img/portfolio1.jpg',
@@ -56,17 +56,17 @@ let data = [
   }
 ];
 
-const app = {
+
+new Vue({
+  el : '#app',
   data() {
     return {
       questions,
-      data,
+      products,
       currentQuestion: 0
     }
   },
   methods: {
 
   }
-}
-
-Vue.createApp(app).mount("#app");
+})
