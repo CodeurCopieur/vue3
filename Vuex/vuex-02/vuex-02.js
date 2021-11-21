@@ -13,19 +13,25 @@ const store = new Vuex.Store({
 })
 
 const vente = {
-  template: '<button @click="vente"> vente 1 salade</button',
+  template: '<button @click="vente"> vente 1 salade</button>',
   methods: {
     vente() {
+      // accès à l'état du store dans un composant
+      console.log(`Avant : ${store.state.salades}`);
       store.commit('uneVente')
+      console.log(`Après : ${this.$store.state.salades}`);
     }
   }
 }
 
 const reappro = {
-  template: '<button @click="reapPro">ajoute de 10 salades</button',
+  template: '<button @click="reapPro">ajoute de 10 salades</button>',
   methods: {
     reapPro() {
+      // accès à l'état du store dans un composant
+      console.log(`Avant : ${store.state.salades}`);
       store.commit('unReapPro')
+      console.log(`Après : ${this.$store.state.salades}`);
     }
   }
 }
