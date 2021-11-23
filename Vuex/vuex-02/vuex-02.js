@@ -1,4 +1,14 @@
+const plug = (store) => {
+  console.log('ini');
+  store.subscribe( (mutation, state) => {
+    console.log('a chaque mutation');
+    console.log(mutation);
+    console.log(state);
+  })
+}
+
 const store = new Vuex.Store({
+  plugins: [plug],
   state: {
     salades: 20
   },
