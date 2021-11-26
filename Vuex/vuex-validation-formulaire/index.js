@@ -1,11 +1,3 @@
-const store = new Vuex.Store({
-  state: {
-
-  },
-  mutations: {
-  }
-})
-
 const app = Vue.createApp( {
   data() {
     return {
@@ -17,7 +9,7 @@ const app = Vue.createApp( {
   methods: {
     isEmail(email) {
       var re = new RegExp(/^[a-z0-9.-]+@[a-z0-9._-]{2,}\.[a-z]{2,8}$/);
-      re.test(email);
+      return re.test(email);
     },
     submit(e) {
       e.preventDefault();
@@ -44,5 +36,4 @@ const app = Vue.createApp( {
     }
   }
 });
-app.use(store);
 app.mount("#app");
