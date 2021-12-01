@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <h1>Videos</h1>
+    <h1>Products</h1>
 
-    <section class="component-videos">
-      <div class="component-videos__container">
-        <VideoListVideo v-for="(video, i) in videos" :key="i" :video="video" />
+    <section class="component-products">
+      <div class="component-products__container">
+        <ProductListProduct v-for="(product, i) in products" :key="i" :product="product" />
       </div>
     </section>
 
@@ -13,16 +13,16 @@
 
 <script>
 
-import VideoListVideo from '@/components/VideoListVideo'
+import ProductListProduct from '@/components/ProductListProduct'
 
 export default {
   name: 'Home',
   components: {
-    VideoListVideo
+    ProductListProduct
   },
   data() {
     return {
-      videos: this.$store.state.videos
+      products: this.$store.state.products
     }
   }
 }
@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 
-  .component-videos {
+  .component-products {
 
     &__container {
       max-width: 80%;
