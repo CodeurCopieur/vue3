@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>plugins</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="app">
+    <bonjour></bonjour>
+    <sbonjour></sbonjour>
+  </div>
+
+  <script>
+
+    const bonjour = {
+      template: '<div>Composant bonjour</div>'
+    }
+
+      const plugins = {
+        install: (app) => {
+          app.mixin({
+            mounted() {
+              console.log('monté');
+            },
+            components: {
+              bonjour
+            }
+          }),
+          app.component('sbonjour', {
+            template: '<div>Composant bonjour 2</div>'
+          })
+          app.config.globalProperties.$bonjour = () => {
+            return 'bonjour';
+          }
+        }
+      }
+
+    const app = Vue.createApp( {
+      mounted() {
+        console.log(this.$bonjour());
+      }
+    });
+    app.use(plugins)
+    app.mount("#app");
+  </script>
+</body>
+</html>
