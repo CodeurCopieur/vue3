@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates vs render functions & JSX</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <taille :param1="valeur" param2="cm"></taille>
+        <taille :param1="valeur"></taille>
+    </div>
+    <script>
+        const Taille = {
+          
+            template: `<div>la taille est de {{param1}} {{param2}} </div>`,
+
+            props: {
+              param1: {
+                type: Number
+              },
+              param2: {
+                type: String,
+                default: 'mm'
+              }
+            }            
+        }
+        const {h} = Vue;
+        const app = Vue.createApp({
+          data() {
+            return  {
+              valeur: 20
+            }
+          },
+            components: {
+                'taille': Taille
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
