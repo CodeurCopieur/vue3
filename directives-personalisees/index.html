@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Directives personnalisées</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-h1blue="'titre en fond bleue'"></div>
+
+    <h1 v-h:1="'its h1'"></h1>
+    <h2 v-h:2="'its h2'"></h2>
+    <h3 v-h:3="'its h3'"></h3>
+
+    <div v-artiste="{name: 'codwerk', age: 26}"></div>
+    <div v-artiste="{name: 'widwerk', age: 26}"></div>
+  </div>
+
+  <script>
+
+    const app = Vue.createApp({});
+    app.directive('h1blue', {
+      beforeMount(el, binding) {
+        el.innerHTML = '<h1>'+ binding.value +'</h1>';
+        el.style.background = 'lightblue';
+      },
+    });
+
+    app.directive('h', {
+      beforeMount(el, binding) {
+        el.innerText = `h${binding.arg} : ${binding.value}`;
+      },
+    })
+
+    
+    app.directive('artiste', {
+      beforeMount(el, binding) {
+        el.innerHTML = `name: ${binding.value.name}, age: ${binding.value.age}`;
+        el.style.background = 'lightblue';
+      },
+    });
+    app.mount("#app");
+  </script>
+</body>
+</html>
