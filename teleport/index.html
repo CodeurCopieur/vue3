@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le composant Teleport</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+      
+      <bonjour></bonjour>
+    </div>
+    <script>
+
+        const app = Vue.createApp({});
+
+        app.component('bonjour', {
+          template: `<p> paragraphe 1 </p><teleport to="body" :disabled="modalOpen"><p> paragraphe 2 </p></teleport><button @click="modalOpen=!modalOpen">Click</button>`,
+          data() {
+              return {
+                modalOpen: true
+              }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
