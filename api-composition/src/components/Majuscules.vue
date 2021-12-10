@@ -1,28 +1,29 @@
 <template>
   <div class="maj">
     <h2>Composation 2</h2>
-    <input type="text" name="" id="" v-model="entree" @keyup="Maj">
-    <span>{{ sortie}}</span>
+    <input type="text" name="" id="" v-model="state.entree" @keyup="Maj">
+    <span>{{ state.sortie}}</span>
   </div>
 </template>
 
 <script>
 
-import {ref} from 'vue';
+import {reactive} from 'vue';
 
 export default {
   name: 'Majuscules',
   setup() {
-    let entree = ref('');
-    let sortie = ref('');
+    let state = reactive({
+      entree: '',
+      sortie: ''
+    });
 
     function Maj(){
-      sortie.value = entree.value.toUpperCase();
+      state.sortie = state.entree.toUpperCase();
     }
 
     return {
-      entree,
-      sortie,
+      state,
       Maj
     }
   }
