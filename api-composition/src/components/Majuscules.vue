@@ -1,32 +1,37 @@
 <template>
   <div class="maj">
     <h2>Composation 2</h2>
-    <input type="text" v-model="state.entree">
-    <span>{{ state.sortie}}</span>
+    <input type="text" v-model="entree" />
+    <span>{{ sortie }}</span>
   </div>
 </template>
 
 <script>
+import { reactive, computed, toRefs } from "vue";
 
-import {reactive, computed} from 'vue';
+function enMaj() {
+  let state = reactive({
+    entree: "",
+    sortie: computed(() => {
+      return state.entree.toUpperCase();
+    }),
+  });
+
+  return toRefs(state);
+}
 
 export default {
-  name: 'Majuscules',
+  name: "Majuscules",
   setup() {
-    let state = reactive({
-      entree: '',
-      sortie: computed(() => {
-        return state.entree.toUpperCase();
-      })
-    });
 
+    let {entree, sortie} = enMaj();
     return {
-      state,
-    }
-  }
-}
+      entree,
+      sortie,
+    };
+  },
+};
 </script>
 
 <style>
-
 </style>
