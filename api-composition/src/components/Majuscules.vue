@@ -1,30 +1,27 @@
 <template>
   <div class="maj">
     <h2>Composation 2</h2>
-    <input type="text" name="" id="" v-model="state.entree" @keyup="Maj">
+    <input type="text" v-model="state.entree">
     <span>{{ state.sortie}}</span>
   </div>
 </template>
 
 <script>
 
-import {reactive} from 'vue';
+import {reactive, computed} from 'vue';
 
 export default {
   name: 'Majuscules',
   setup() {
     let state = reactive({
       entree: '',
-      sortie: ''
+      sortie: computed(() => {
+        return state.entree.toUpperCase();
+      })
     });
-
-    function Maj(){
-      state.sortie = state.entree.toUpperCase();
-    }
 
     return {
       state,
-      Maj
     }
   }
 }
