@@ -17,9 +17,9 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            v-model='email'
+            v-model='state.email'
             id="username"
-            type="email"
+            type="text"
             placeholder="Username"
           />
         </div>
@@ -38,7 +38,7 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            v-model='password.password'
+            v-model='state.password.password'
             id="password"
             type="password"
             placeholder="Password"
@@ -61,7 +61,7 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            v-model="password.confirm"
+            v-model="state.password.confirm"
             id="confirm"
             type="password"
             placeholder="Confirm Password"
@@ -96,28 +96,35 @@
 <script>
 
 import useValidate from '@vuelidate/core'
-import {required} from '@vuelidate/validators'
+import {required, email, minLength, sameAs} from '@vuelidate/validators'
 import {reactive, computed} from 'vue'
 
 export default {
   name: 'Vuelidate',
-  data() {
-    return {
-      v$: useValidate(),
+  setup() {
+    const state = reactive({
       email: '',
       password: {
         password: '',
         confirm: ''
       }
-    }
-  },
-  validations(){
-    return {
-      email: {required},
-      password: {
-        password: {required},
-        confirm: {required}
+    })
+
+    const rules = computed(()=> {
+      return {
+        email: {required, email},
+        password: {
+          password: {required, minLength: minLength(8)},
+          confirm: {required, sameAs: sameAs(state.password.password)}
+        }
       }
+    })
+
+    const v$ = useValidate(rules, state)
+
+    return {
+      state,
+      v$
     }
   },
   methods: {
