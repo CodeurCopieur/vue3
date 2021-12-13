@@ -17,7 +17,7 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            :class="v$.email.$error ? 'border-red-500' : 'border-green-500'"
+            :class="v$.email.$error ? 'border-red-500' : ''"
             v-model='state.email'
             id="username"
             type="text"
@@ -42,7 +42,7 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            :class="v$.password.password.$error ? 'border-red-500' : 'border-green-500'"
+            :class="v$.password.password.$error ? 'border-red-500' : ''"
             v-model='state.password.password'
             id="password"
             type="password"
@@ -58,7 +58,7 @@
             class="
               shadow
               appearance-none
-              border border-red-500
+              border
               rounded
               w-full
               py-2
@@ -68,7 +68,7 @@
               leading-tight
               focus:outline-none focus:shadow-outline
             "
-            :class="v$.password.confirm.$error ? 'border-red-500' : 'border-green-500'"
+            :class="v$.password.confirm.$error ? 'border-red-500' : ''"
             v-model="state.password.confirm"
             id="confirm"
             type="password"
@@ -106,7 +106,7 @@
 <script>
 
 import useValidate from '@vuelidate/core'
-import {required, email, minLength, sameAs} from '@vuelidate/validators'
+import {required, email, minLength, sameAs, helpers} from '@vuelidate/validators'
 import {reactive, computed} from 'vue'
 
 export default {
@@ -120,11 +120,16 @@ export default {
       }
     })
 
+    const mustBeLearnVue = value => value.includes('cod')
+
     const rules = computed(()=> {
       return {
-        email: {required, email},
+        email: {
+          required: helpers.withMessage('le champ est vide', required), 
+          email: helpers.withMessage(`la valeur n'est pas une address email`, email), 
+          mustBeLearnVue: helpers.withMessage('il doit y avoir cod', mustBeLearnVue)},
         password: {
-          password: {required, minLength: minLength(8)},
+          password: {required, minLength: minLength(6)},
           confirm: {required, sameAs: sameAs(state.password.password)}
         }
       }
