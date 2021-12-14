@@ -14,9 +14,9 @@ Pas besoin d'écrire des centaines de conditions pour vérifier nos entrées.
 - select a framework : ...
 - cd folder
 - yarn install
-- yarn install -D tailwindcss@latest postcss@latest autoprefixer@latest
+- yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest
 - npx tailwindcss init -p
-- tailwind.config.js > content : './index.html', './src/**/*{vue,js,ts,jsx,tsx}
+- tailwind.config.js > content : './index.html', './src/**/*{vue,js,ts,jsx,tsx}'
 - touch src/index.css : ` @tailwind base; @tailwind components; @tailwind utilities;`
 - main.js : import "./index.css"
 - yarn run dev
