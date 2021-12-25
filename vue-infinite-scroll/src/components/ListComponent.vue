@@ -1,5 +1,5 @@
 <template>
-  <div class="scrolling-component" ref="scrollingComponent">
+  <div class="scrolling-component max-w-sm mx-auto bg-white" ref="scrollingComponent">
     <PostComponent
       v-for="(post, i) in posts"
       :post="post"
