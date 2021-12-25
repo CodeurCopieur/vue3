@@ -15,6 +15,6 @@ import ListComponent from './components/ListComponent.vue'
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    padding-top: 60px;
+    background-color: rgb(99 102 241);
   }
 </style>
