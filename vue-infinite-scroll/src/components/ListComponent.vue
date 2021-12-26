@@ -5,7 +5,7 @@
       :post="post"
       :key="i"
     ></PostComponent>
-    <div  ref="scrollingComponent"> test</div>
+    <div  ref="scrollingComponent"> loader </div>
   </div>
 </template>
 
@@ -36,7 +36,7 @@
            if(entry.intersectionRatio > 0 ) {
              setTimeout(()=> {
                loadMorePosts()
-             })
+             },1000)
            }
          });
        });
@@ -55,7 +55,3 @@
     }
   }
 </script>
-
-<style>
-
-</style>
