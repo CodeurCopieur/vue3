@@ -20,3 +20,4 @@ Pas besoin d'écrire des centaines de conditions pour vérifier nos entrées.
 - touch src/index.css : ` @tailwind base; @tailwind components; @tailwind utilities;`
 - main.js : import "./index.css"
 - yarn run dev
+- https://dixx1.sse.codesandbox.io/
