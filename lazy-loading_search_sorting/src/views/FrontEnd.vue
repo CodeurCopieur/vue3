@@ -1,5 +1,5 @@
 <template>
-  <Products :products="filteredProducts" :filters="filters" @set-filters="filtersChanged"/>
+  <Products :products="filteredProducts" :filters="filters" @set-filters="filtersChanged" :lastPage="lastPage" />
 </template>
 
 <script>
@@ -15,22 +15,26 @@
       const filteredProducts = ref([])
       const filters = reactive({
         s: '',
-        sort: ''
+        sort: '',
+        page: 1
       })
+
+      const perPage = 3;
+      const lastPage = ref(0);
 
       onMounted(async ()=> {
         const res = await fetch('https://fakestoreapi.com/products')
         const content = await res.json()
 
         allProducts.value = content;
-        filteredProducts.value = content;
-
-        console.log(filteredProducts.value);
+        filteredProducts.value = content.slice(0, filters.page * perPage);
+        lastPage.value = Math.ceil(content.length / perPage);
       })
 
       const filtersChanged = (f)=> {
         filters.s = f.s;
         filters.sort = f.sort;
+        filters.page = f.page;
 
         let products = allProducts.value.filter( p => p.title.toLowerCase().indexOf(filters.s.toLowerCase()) >= 0 || p.description.toLowerCase().indexOf(filters.s.toLowerCase()) >= 0);
 
@@ -51,12 +55,14 @@
           })
         }
 
-        filteredProducts.value = products
+        lastPage.value = Math.ceil(products.length / perPage);
+        filteredProducts.value = products.slice(0, filters.page * perPage)
       }
 
       return {
         filteredProducts,
         filters,
+        lastPage,
         filtersChanged
       }
     }

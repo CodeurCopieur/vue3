@@ -11,6 +11,7 @@
               class="md:w-1/5 w-full form-select mt-10 md:mt-0 block w-full border p-3 rounded text-xs bg-white"
               @change="sort($event.target.value)"
             >
+            <option>Select</option>
             <option value="asc">Prix Croissant</option>
             <option value="desc">Prix Decroissant</option>
             </select>
@@ -29,7 +30,11 @@
           </div>
         </div>
       </div> 
-      <button class="flex mx-auto my-6 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Plus</button>
+      <button 
+          class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+          @click="loadMore"
+          v-if="filters.page < lastPage"
+          >Charger Plus</button>
     </div>
 </section>
 </template>
@@ -37,20 +42,24 @@
 <script>
   export default {
     name: "Products",
-    props: ['products','filters'],
+    props: ['products','filters', 'lastPage'],
     emits: ['set-filters'],
     setup(props, {emit}) {
       const search = (s) => {
-        emit('set-filters', {...props.filters, s})
+        emit('set-filters', {...props.filters, s, page: 1})
       }
 
       const sort = (sort) => {
-        emit('set-filters', {...props.filters, sort})
+        emit('set-filters', {...props.filters, sort, page: 1})
+      }
+      const loadMore = () => {
+        emit('set-filters', {...props.filters, page: props.filters.page + 1})
       }
 
       return {
         search,
-        sort
+        sort,
+        loadMore
       }
     }
   }
