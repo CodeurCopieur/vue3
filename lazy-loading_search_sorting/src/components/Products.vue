@@ -7,10 +7,10 @@
               class="md:w-3/5 w-full shadow appearance-none border rounded text-gray-700 py-2 px-3 focus:outline-none focus:shadow-outline"
               @keyup="search($event.target.value)"
               placeholder="Search">
-          <select 
-            name="" 
-            id=""
-            class="md:w-1/5 w-full form-select mt-10 md:mt-0 block w-full border p-3 rounded text-xs bg-white" >
+          <select
+              class="md:w-1/5 w-full form-select mt-10 md:mt-0 block w-full border p-3 rounded text-xs bg-white"
+              @change="sort($event.target.value)"
+            >
             <option value="asc">Prix Croissant</option>
             <option value="desc">Prix Decroissant</option>
             </select>
@@ -41,11 +41,16 @@
     emits: ['set-filters'],
     setup(props, {emit}) {
       const search = (s) => {
-        emit('set-filters', {s})
+        emit('set-filters', {...props.filters, s})
+      }
+
+      const sort = (sort) => {
+        emit('set-filters', {...props.filters, sort})
       }
 
       return {
-        search
+        search,
+        sort
       }
     }
   }
