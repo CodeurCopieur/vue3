@@ -1,24 +1,10 @@
 # vuex-store-lesson
 
-## Project setup
-```
-yarn install
-```
+**Gérer le State Management de Vue.js 3 à l'aide de la librairie VueX.**
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+Au programme : 
+- le state management pattern
+- l'installation du module vuex
+- getters, mutations, actions
+- https://tfrs5.csb.app/
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
