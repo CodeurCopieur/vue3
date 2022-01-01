@@ -1,21 +1,36 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Our Team</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them.</p>
+      </div>
+
+      <div class="flex flex-wrap -m-2">
+        <Suspense>
+          <template #default>
+            <ProfileCard></ProfileCard>
+          </template>
+          <template #fallback>
+            <ProfileCardSkeleton></ProfileCardSkeleton>
+          </template>
+        </Suspense> 
+       </div>
+    </div>
+  </section>
 </template>
+
+<script setup>
+import ProfileCard from './components/ProfileCard.vue'
+import ProfileCardSkeleton from './components/ProfileCardSkeleton.vue'
+</script>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
