@@ -1,6 +1,7 @@
 <script setup>
   import axios from 'axios'
   import { ref } from 'vue'
+  import kanyeApi from './services/kanyeApi'
 
   const quote = ref('');
 
@@ -8,7 +9,7 @@
   const loadQuote = async() => {
 
     try {
-      const res = await axios.get('https://api.kanye.rest/')
+      const res = await kanyeApi.getQuote()
       quote.value = res.data.quote
     } catch (error) {
       console.log(error);
@@ -20,15 +21,14 @@
   /*axios.get('https://api.kanye.rest/')
     .then( res => quote.value = res.data.quote)*/
 
-  function createPost() {
-    axios.post('https://jsonplaceholder.typicode.com/posts',
-      JSON.stringify({
+  async function createPost() {
+    const res = await kanyeApi.createPost(JSON.stringify({
         id: 1,
         title: 'foo',
         body: 'bar',
         userId: 1,
-      })
-    ).then( res => console.log(res))
+      }))
+    console.log(res);
   }
 
 
