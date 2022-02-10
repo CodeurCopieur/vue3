@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <CaptionedContent></CaptionedContent>
+  <CaptionedContent>
+    source : <a href="https://codesandbox.io/u/codwerk" target="_blank" class="px-3 py-2 rounded-md bg-sky-500 text-white cursor-pointer"><span class="sm:inline lg:hidden xl:inline"> Codwerk</span></a>
+  </CaptionedContent>
 </template>
 
 <style>
