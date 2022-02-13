@@ -7,12 +7,15 @@ import TabsWrapper from './components/TabsWrapper.vue'
 </script>
 
 <template>
-  <TabsWrapper>
-    <Tab title="Tab 1">Hello Tab 1</Tab>
-    <Tab title="Tab 2">Hello Tab 2</Tab>
-    <Tab title="Tab 3">Hello Tab 3</Tab>
-    <Tab title="Tab 4">Hello Tab 4</Tab>
-  </TabsWrapper>
+  <main class="h-screen flex">
+    <TabsWrapper>
+      <Tab title="Tab 1">Hello Tab 1</Tab>
+      <Tab title="Tab 2">Hello Tab 2</Tab>
+      <Tab title="Tab 3">Hello Tab 3</Tab>
+      <Tab title="Tab 4">Hello Tab 4</Tab>
+    </TabsWrapper>
+  </main>
+ 
 </template>
 
 <style>
