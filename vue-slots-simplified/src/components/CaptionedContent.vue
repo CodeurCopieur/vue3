@@ -20,6 +20,9 @@
               <div class="text-slate-700 dark:text-slate-500">
                 <slot name="caption">Caption</slot>
               </div>
+              <div class="text-slate-700 dark:text-slate-500">
+                  <slot name="name" :blaze="name"></slot> 
+                </div>
             </figcaption>
         </div>
       </figure>
@@ -27,5 +30,9 @@
   </main>
 </template>
 
-<script>
+<script setup>
+
+  import { ref } from 'vue'
+
+  const name = ref('codwerk')
 </script>

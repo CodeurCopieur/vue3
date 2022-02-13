@@ -16,6 +16,10 @@
     <template #caption>
       source : <a :href="link" target="_blank" class="px-3 py-2 rounded-md bg-sky-500 text-white cursor-pointer"><span class="sm:inline xl:inline"> {{source}} :)</span></a>
     </template>
+
+    <template #name="{ blaze }">
+        {{ blaze}}
+    </template>
   </CaptionedContent>
 </template>
 
