@@ -6,3 +6,5 @@ J'utilise des emplacements pour créer un composant d'onglet personnalisé qui p
 - TabsWrapper.vue : tous les onglets seront situé à l'intérieur, gère le rendu conditionnel
 
 >> les 2 utiliseront des slots
+
+https://ky01vr.sse.codesandbox.io/
