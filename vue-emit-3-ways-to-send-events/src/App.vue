@@ -5,12 +5,7 @@ import vueEmit from './components/inline-emit/vueEmit.vue'
 </script>
 
 <template>
-
-  <div style="margin-bottom: 60px;">
-    <h2>Inline Emit</h2>
     <vueEmit/>
-  </div>
-  
 </template>
 
 <style>
