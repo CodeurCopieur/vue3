@@ -11,22 +11,30 @@
     <option-api-emit @optionApi="optionApi"></option-api-emit>
     <p>{{ second }}</p>
   </div>
+
+  <div>
+    <h2>composition Api</h2>
+    <composition-api-emit @compositionApi="compositionApi"></composition-api-emit>
+    <p>{{ third }}</p>
+  </div>
 </template>
 
 <script>
 
 import inlineEmit from './inlineEmit.vue'
 import optionApiEmit from './optionApiEmit.vue'
+import compositionApiEmit from './compositionApiEmit.vue'
 
 
 export default {
   components: {
-    inlineEmit, optionApiEmit
+    inlineEmit, optionApiEmit, compositionApiEmit
   },
   data() {
     return {
       first: '',
-      second: ''
+      second: '',
+      third : ''
     }
   },
   methods: {
@@ -36,6 +44,9 @@ export default {
     },
     optionApi (event) {
       this.second = event;
+    },
+    compositionApi (event) {
+      this.third = event;
     }
   }
 }
