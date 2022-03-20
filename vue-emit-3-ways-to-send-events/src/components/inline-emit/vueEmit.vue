@@ -1,15 +1,15 @@
 <template>
-  <custom-text-input @customChange="logChange"></custom-text-input>
+  <inline-emit @customChange="logChange"></inline-emit>
   <p>{{ TextInput }}</p>
 </template>
 
 <script>
 
-import customTextInput from './customTextInput.vue'
+import inlineEmit from './inlineEmit.vue'
 
 export default {
   components: {
-    customTextInput
+    inlineEmit
   },
   data() {
     return {
