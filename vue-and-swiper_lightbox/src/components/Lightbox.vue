@@ -2,15 +2,20 @@
   import { ref } from 'vue'
   import 'lazysizes'
   import Carousel from './Carousel.vue'
+  import Thumbnail from './Thumbnail.vue'
+
+  import 'swiper/css'
+  import 'swiper/css/bundle'
 
   const lightBox = ref(false);
   const slide = ref(0);
+  const Thumbs = ref(null);
 </script>
 
 <template>
   <div class="grid">
     <div 
-      v-for="n in 1000" 
+      v-for="n in 100" 
       :key="n" class="gridItem" 
       @click="lightBox = true; slide = Number(n) - 1">
       <img :data-src="'https://picsum.photos/1024/600?random='+n" class="lazyload" alt=""/>
@@ -21,15 +26,17 @@
       <div class="ligthBoxDialog">
         <div class="ligthBoxContent">
           <div class="ligthBoxHeader">
-            <span></span>
+            <span class="ligthBoxDownload">Download</span>
             <span class="ligthBoxClose" @click.stop="lightBox = false">
-              &times;
+              Close
             </span>
           </div>
           <div class="ligthBoxBody">
-            <Carousel :current-slide="slide" />
+            <Carousel :current-slide="slide" :thumbs="thumbs" />
           </div>
-          <div class="ligthBoxFooter"></div>
+          <div class="ligthBoxFooter">
+            <Thumbnail @thumbs="thumbs" v-model:current-slide="slide"/>
+          </div>
         </div>
       </div>
     </div>
@@ -96,7 +103,7 @@
     justify-content: space-between;
   }
 
-  .ligthBoxClose {
+  .ligthBoxClose, .ligthBoxDownload {
     color: #fff;
     cursor: pointer;
     font-weight: bold;
@@ -112,7 +119,7 @@
     width: calc(100vw - 30px);
     position: absolute;
     z-index: 104;
-    top: 0;
+    bottom: 0;
     left: 0;
     display: flex;
     justify-content: space-between;
@@ -126,7 +133,6 @@
 
   .ligthBoxClose:hover,
   .ligthBoxClose:focus {
-    color: #999;
     text-decoration: none;
     cursor: pointer;
   }
