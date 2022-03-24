@@ -1,13 +1,12 @@
 <script setup>
   import { ref, watch, toRefs } from 'vue'
-  import { Navigation,  Pagination, A11y, Lazy } from 'swiper'
+  import { Navigation,  Pagination, A11y, Lazy, Thumbs } from 'swiper'
   import { Swiper, SwiperSlide} from 'swiper/vue'
 
-  import 'swiper/css'
-  import 'swiper/css/bundle'
 
   const props = defineProps({
-    currentSlide: Number
+    currentSlide: Number,
+    thumbs: Object
   });
 
   const swiperRef = ref(null)
@@ -30,13 +29,14 @@
     @swiper="onSwiper"
     :slides-per-view="1" 
     :space-between="50" 
-    :modules="[Navigation, Pagination, A11y, Lazy]" 
+    :modules="[Navigation, Pagination, A11y, Lazy, Thumbs]" 
     navigation
     :pagination="{ clickable: true, dynamicBullets: true }"
     grab-cursor
     :preload-images="false"
-    lazy>
-    <SwiperSlide v-for="n in 1000" :key="n" class="customSlide">
+    lazy
+    :thumbs="{ swiper:thumbs }">
+    <SwiperSlide v-for="n in 100" :key="n" class="customSlide">
       <img :data-src="'https://picsum.photos/1024/600?random='+n" class="swiper-lazy" alt=""/>
       <div class="swiper-lazy-preloader"></div>
     </SwiperSlide>
