@@ -1,4 +1,4 @@
-# Carousel Slider with Vue 3 and Swiper.js
+# Carousel Lightbox with Vue 3 and Swiper.js
 
 - npm init vite
 - npm i swiper
