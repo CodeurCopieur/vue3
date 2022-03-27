@@ -3,11 +3,12 @@
       <router-link :to="{name: 'product-watch', params: { id:product.id}}">
         <figure>
           <picture class="component-products__wrap-image">
-            <img :src="product.thumbnail" alt="">
+            <img :src="product.image" alt="">
           </picture>
         </figure>
-        <h3>{{ product.name }}</h3>
-        <div v-html="product.description"></div>
+        <h3>{{ product.title }}</h3>
+        <!--<div v-html="product.description"></div>-->
+        <div><p>{{ product.description }}</p></div>
       </router-link>
   </article>
 
