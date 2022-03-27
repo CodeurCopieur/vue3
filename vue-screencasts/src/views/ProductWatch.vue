@@ -7,23 +7,23 @@
           <!--<video-player  class="video-player-box"
                  ref="videoPlayer"
                  :options="playerOptions">
-          </video-player> -->
+          </video-player> 
           <div class="component__wrap-product">
             <video controls :poster="product.thumbnail">
               <source :src="product.videoUrl" type="video/mp4">
             </video>
-          </div>
+          </div>-->
           
 
-          <!--<figure>
+          <figure>
             <picture class="component__wrap-image">
-              <img :src="video.thumbnail" alt="">
+              <img :src="product.image" alt="">
             </picture>
-          </figure>-->
+          </figure>
           
-          <h1>{{ product.name }}</h1>
+          <h1>{{ product.title }}</h1>
           <p>{{ this.$route.params.id }}</p>
-          <div v-html="product.description"></div>
+          <div><p>{{ product.description }}</p></div>
         </article>
       </div>
       
@@ -36,29 +36,12 @@
   
 </template>
 <script>
-import 'video.js/dist/video-js.css'
- 
-//import { videoPlayer } from 'vue-video-player'
 
 export default {
-  /*components: {
-    videoPlayer
-  },*/
   computed: {
     product() {
       return this.$store.state.products.find( product => product.id == this.$route.params.id)
-    },
-    /*playerOptions() {
-      return {
-        language: 'en',
-          playbackRates: [0.7, 1.0, 1.5, 2.0],
-          sources: [{
-            type: "video/mp4",
-            src: this.video.videoUrl
-          }],
-          poster: this.video.thumbnail,
-      }
-    }*/
+    }
   }
 }
 </script>

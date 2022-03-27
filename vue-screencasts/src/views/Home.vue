@@ -14,17 +14,19 @@
 <script>
 
 import ProductListProduct from '@/components/ProductListProduct';
-import Api from '@/service/api';
+//import Api from '@/service/api';
 
 export default {
   name: 'Home',
   components: {
     ProductListProduct
   },
-  mounted() {
-    this.loadProducts();
-  },
-  methods: {
+  computed: {
+    products() {
+      return this.$store.state.products;
+    }
+  }
+  /*methods: {
     async loadProducts() {
       let res = await Api().get('/products');
       this.products = res.data;
@@ -35,7 +37,7 @@ export default {
       //products: this.$store.state.products
       products: []
     }
-  }
+  }*/
 }
 </script>
 
