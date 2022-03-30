@@ -14,30 +14,34 @@
 <script>
 
 import ProductListProduct from '@/components/ProductListProduct';
-//import Api from '@/service/api';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Home',
   components: {
     ProductListProduct
   },
-  computed: {
-    products() {
-      return this.$store.state.products;
-    }
-  }
-  /*methods: {
-    async loadProducts() {
-      let res = await Api().get('/products');
-      this.products = res.data;
-    }
-  },
-  data() {
-    return {
-      //products: this.$store.state.products
-      products: []
-    }
-  }*/
+  computed:mapState([
+    'products'
+  ])
+  // computed: {
+  //   products() {
+  //     return this.$store.state.products;
+  //   }
+  // }
+  
+  // methods: {
+  //   async loadProducts() {
+  //     let res = await Api().get('/products');
+  //     this.products = res.data;
+  //   }
+  // },
+  // data() {
+  //   return {
+  //     //products: this.$store.state.products
+  //     products: []
+  //   }
+  // }
 }
 </script>
 
