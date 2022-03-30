@@ -7,8 +7,13 @@
           </picture>
         </figure>
         <h3>{{ product.title }}</h3>
+        
         <!--<div v-html="product.description"></div>-->
-        <div><p>{{ product.description }}</p></div>
+        <div>
+          <p>{{ product.price }}€</p>
+          <p>{{ product.category }}</p>
+          <p>{{ product.description }}</p>
+          </div>
       </router-link>
   </article>
 
