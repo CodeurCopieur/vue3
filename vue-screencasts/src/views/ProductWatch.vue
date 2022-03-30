@@ -23,7 +23,11 @@
           
           <h1>{{ product.title }}</h1>
           <p>{{ this.$route.params.id }}</p>
-          <div><p>{{ product.description }}</p></div>
+          <div>
+            <p>{{ product.price }}€</p>
+            <p>{{ product.category }}</p>
+            <p>{{ product.description }}</p>
+          </div>
         </article>
       </div>
       
