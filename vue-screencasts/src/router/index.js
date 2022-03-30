@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import ProductWatch from '../views/ProductWatch.vue'
+import TagProductList from '../views/TagProductList.vue'
 
 const routes = [
   {
@@ -21,7 +22,12 @@ const routes = [
     name: 'product-watch',
     component: ProductWatch,
     params: true
-  },
+  },{
+    path: '/tag/:name',
+    name: 'tag',
+    component: TagProductList,
+    params: true
+  }
 ]
 
 const router = createRouter({
