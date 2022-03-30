@@ -13,7 +13,8 @@ export default createStore({
   actions: {
     async loadProducts({commit}) {
       let res = await Api().get('/products');
-      commit('SET_PRODUCTS', res.data);
+      let products = res.data;
+      commit('SET_PRODUCTS', products);
     }
   },
   modules: {
