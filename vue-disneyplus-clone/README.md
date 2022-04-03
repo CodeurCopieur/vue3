@@ -19,6 +19,6 @@
   @tailwind utilities;
 - main.js : import "./index.css"
 - npm i vue-router@4
-- npm i vue@next -D
+- npm i vuex@next -D
 - yarn run dev
 ```
