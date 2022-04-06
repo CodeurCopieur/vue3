@@ -53,8 +53,8 @@
         </li>
       </ul>
     </div>
-    <div class="w-full">
-       <div class="xl:container mx-auto">
+    <div class="w-full mx-24">
+       <div class="container mx-auto">
          <router-view></router-view>
        </div>
     </div>

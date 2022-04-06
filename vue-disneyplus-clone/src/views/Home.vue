@@ -3,6 +3,7 @@
     <div class="mb-12">
       <img src="../assets/slide1.jpg" class="rounded" alt="">
     </div>
+    <!-- categories -->
     <div class="categories flex items-center mb-12 -mx-4">
       <div class="w-1/5 px-4">
         <a href="#" class="bg-gray-800 h-32 flex justify-center items-center rounded-lg border border-gray-700 p-4 hover:bg-gray-900 shadow-custom">
@@ -29,9 +30,69 @@
           <img src="../assets/national_geographic_logo.svg" alt="national geographic">
         </a>
       </div>
+    </div> 
+    <!-- categories -->
+    
+    <div class="recommended px-6 mb-12">
+      <h2 class="text-gray-500 mb-1">Recommended For You</h2>
+      <div class="flex items-center">
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+      </div>
     </div>
-    <p class="mb-32">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptatum libero optio cum, vero, nisi maiores quae est itaque quaerat tempora asperiores recusandae id cupiditate facere iure dolore minima dolorem.
-    </p>
+
+    <div class="recommended px-6 mb-12">
+      <h2 class="text-gray-500 mb-1">Recommended For You</h2>
+      <div class="flex items-center">
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+        <div class="shadow-xl mr-6">
+          <a href="#">
+            <img src="../assets/star_wars_a_new_hope.jpg" alt="star wars">
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
