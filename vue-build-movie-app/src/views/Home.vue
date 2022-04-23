@@ -56,10 +56,14 @@
         <router-link :to="'/movie/' + movie.id" class="movie-link">
           <div class="movie-poster" v-if="movie.poster_path">
             <span class="backdrop-fill">
-              <img :src="'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'+movie.poster_path" :alt="movie.original_title">
+              <picture>
+                <img :src="'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'+movie.backdrop_path" :alt="movie.original_title">
+              </picture>
             </span>
             <span class="poster-fill">
-              <img :src="'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'+movie.poster_path" :alt="movie.original_title">
+              <picture>
+                <img :src="'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'+movie.poster_path" :alt="movie.original_title">
+              </picture>
             </span>
           </div>
 
