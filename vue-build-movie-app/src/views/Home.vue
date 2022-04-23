@@ -54,7 +54,7 @@
     <ul class="movie-list">
       <li class="movie" v-for="movie in movies" :key="movie.id">
         <router-link :to="'/movie/' + movie.id" class="movie-link">
-          <div class="movie-poster">
+          <div class="movie-poster" v-if="movie.poster_path">
             <span class="backdrop-fill">
               <img :src="'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'+movie.poster_path" :alt="movie.original_title">
             </span>
