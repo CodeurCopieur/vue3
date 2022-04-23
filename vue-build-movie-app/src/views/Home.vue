@@ -5,17 +5,24 @@
   const search = ref("");
   const movies  = ref([]);
 
+  let currentPage = ref(1);
+  let totalResults = ref(null);
+
   const searchMovies = () => {
     if(search.value != "") {
       const apiUrl = 'https://api.themoviedb.org/3';
       const urlSuffix = '/search/movie';
 
       try {
-        fetch(`${apiUrl}${urlSuffix}?api_key=${env.api_key}&query=${search.value}`)
+        fetch(`${apiUrl}${urlSuffix}?api_key=${env.api_key}&query=${search.value}&page=${currentPage}`)
           .then( res => res.json())
           .then( data => {
             if(data) {
-              console.log(data);
+
+              //totalResults.value = data.total_results;
+              movies.value = data.results;
+              search.value= ""
+              //console.log(data, totalResults);
             }
           })
       } catch (error) {
@@ -44,13 +51,35 @@
       <input type="submit" value="Recherche">
     </form>
 
-    <div class="movie-list">
+    <ul class="movie-list">
+      <li class="movie" v-for="movie in movies" :key="movie.id">
+        <router-link :to="'/movie/' + movie.id" class="movie-link">
+          <div class="movie-poster">
+            <span class="backdrop-fill">
+              <img :src="'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'+movie.poster_path" :alt="movie.original_title">
+            </span>
+            <span class="poster-fill">
+              <img :src="'https://image.tmdb.org/t/p/w300_and_h450_bestv2/'+movie.poster_path" :alt="movie.original_title">
+            </span>
+          </div>
 
-    </div>
+          <div class="details">
+            <p>{{ movie.release_date }}</p>
+            <h3>{{  movie.original_title }}</h3>
+          </div>
+          
+        </router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
 <style lang="scss">
+
+    img {
+      height: auto;
+      max-width: 100%;
+    }
   .home {
     .featured-card {
       position: relative;
@@ -142,6 +171,81 @@
           max-width: 50%;
           margin-left: auto;
           margin-right: auto;
+        }
+      }
+    }
+
+    .movie-list {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+
+      .movie {
+        overflow: hidden;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 20px;
+
+        background-color: #fff;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15),0 2px 3px rgba(255, 255, 255, 0.2);
+
+        .movie-poster {
+          position: relative;
+        }
+
+        .backdrop-fill {
+          position: absolute;
+          overflow: hidden;
+          width: 150%;
+          height: 150%;
+          top: -80%;
+          bottom: -20%;
+          left: -20%;
+          transform: rotate(5deg);
+
+          img {
+            filter: blur(6px);
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transform: scale(1.4);
+          }
+        }
+
+        .poster-fill {
+          position: relative;
+          display: block;
+          align-self: center;
+          margin-top: 84px;
+          margin-left: 24px;
+          width: 140px;
+          border-radius: 2px;
+          z-index: 1;
+
+          img {
+            filter: drop-shadow(5px 10px 15px rgba(8,9,13,.4));
+            transition: all .5s;
+          }
+        }
+
+        .details {
+          color: #272d40;
+          text-align: left;
+          padding: 24px;
+        }
+
+        @media (max-width: 64rem) and (min-width: 48rem) {
+          width: 32%;
+        }
+
+        @media screen and (min-width: 64rem) {
+          width: 24%;
+          transition: all .48s;
         }
       }
     }
