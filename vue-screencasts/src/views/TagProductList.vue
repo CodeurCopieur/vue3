@@ -1,11 +1,26 @@
 <template>
   <h2>Products w/ Tag {{ this.$route.params.name }}</h2>
 
-  <div v-for="tag in tags" :key="tag">
-    {{ tag.title }} <br>
-    {{ tag.price }} <br>
-    {{ tag.rating.rate }}
-  </div>
+    <section class="component-products">
+      <div class="component-products__container">
+
+        <article class="component-products__card" v-for="tag in tags" :key="tag">
+            <router-link :to="{name: 'product-watch', params: { id:tag.id}}">
+              <figure>
+                <picture class="component-products__wrap-image">
+                  <img :src="tag.image" alt="">
+                </picture>
+              </figure>
+              <h3>{{ tag.title }}</h3>
+            </router-link>
+              <div>
+                <p>{{ tag.price }}€</p>
+                <p>{{ tag.category }}</p>
+                <p>{{ tag.description }}</p>
+              </div>
+        </article>
+      </div>
+    </section>
 </template>
 <script>
 export default {
