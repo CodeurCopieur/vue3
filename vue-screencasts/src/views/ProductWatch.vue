@@ -23,6 +23,8 @@
           
           <h1>{{ product.title }}</h1>
           <p>{{ this.$route.params.id }}</p>
+          <div class="btn-text" v-if="isPlayed">Played :)</div>
+          <div v-else class="btn-text"> Marked played</div>
           <div>
             <p>{{ product.price }}€</p>
             <p>{{ product.category }}</p>
@@ -40,11 +42,16 @@
   
 </template>
 <script>
+import { mapState } from 'vuex';
 
 export default {
   computed: {
     product() {
-      return this.$store.state.products.find( product => product.id == this.$route.params.id)
+      return this.products.find( product => product.id == this.$route.params.id)
+    },
+    ...mapState(['playedProducts', 'products']),
+    isPlayed() {
+      return this.playedProducts.includes(this.product.id);
     }
   }
 }
@@ -75,6 +82,15 @@ export default {
     object-fit: cover;
   }
 }
+
+  .btn-text {
+    padding: 1rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 25%;
+    margin: 0 auto;
+  }
 
   .component__wrap-content-aside {
     display: flex;
