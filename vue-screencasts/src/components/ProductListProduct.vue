@@ -8,14 +8,13 @@
         </figure>
         <h3>{{ product.title }}</h3>
       </router-link>
-        <!--<div v-html="product.description"></div>-->
-        <div>
-          <p>{{ product.price }}€</p>
-          <router-link :to="{name: 'tag', params: { name:product.category}}">
-            <p>{{ product.category }}</p>
-            </router-link>
-          <p>{{ product.description }}</p>
-        </div>
+      <div>
+        <p>{{ product.price }}€</p>
+        <router-link :to="{name: 'tag', params: { name:product.category}}">
+          <p>{{ product.category }}</p>
+          </router-link>
+        <p>{{ product.description }}</p>
+      </div>
       
   </article>
 
