@@ -9,9 +9,9 @@ Animer des éléments dans Vue n'a jamais été aussi simple.
 
 ## Tech Stack
 
-**Client :** VueJS, Vueuse
+**Client :** [VueJS](https://vuejs.org/), [Vueuse](https://motion.vueuse.org/)
 
 ## 🛠 Skills
 Javascript, HTML, CSS...
 
-
+[Awesome README](https://github.com/matiassingers/awesome-readme)
