@@ -3,6 +3,7 @@
 Animer des éléments dans Vue n'a jamais été aussi simple.
 
 **Start the server**
+
 ```bash
   npm run dev
 ```
@@ -12,6 +13,7 @@ Animer des éléments dans Vue n'a jamais été aussi simple.
 **Client :** [VueJS](https://vuejs.org/), [Vueuse](https://motion.vueuse.org/)
 
 ## 🛠 Skills
+
 Javascript, HTML, CSS...
 
-[Awesome README](https://github.com/matiassingers/awesome-readme)
+[Demo](https://2o0tn5.sse.codesandbox.io/)
