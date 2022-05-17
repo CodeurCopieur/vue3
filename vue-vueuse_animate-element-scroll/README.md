@@ -1,6 +1,8 @@
 # Animate an Element on Scroll
 
-Start the server
+Animer des éléments dans Vue n'a jamais été aussi simple.
+
+**Start the server**
 ```bash
   npm run dev
 ```
