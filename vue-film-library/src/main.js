@@ -4,6 +4,6 @@ import App from './App.vue'
 // config router
 import router from './router'
 
-import 'uimini'
+import './index.css'
 
 createApp(App).use(router).mount('#app')
