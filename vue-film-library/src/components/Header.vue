@@ -7,7 +7,7 @@
 
 <template>
   <header>
-    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
         <router-link to="/" class="flex items-center">
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">FilmLibrary</span>
@@ -29,7 +29,7 @@
   </header>
 <!-- Breadcrumb -->
 
-  <div class="max-w-3xl mx-auto my-0 ">
+  <div class="max-w-3xl mx-auto my-0">
     <nav class="flex justify-center py-3 px-5 text-gray-700 bg-gray-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 my-4" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
