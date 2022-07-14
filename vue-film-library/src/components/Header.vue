@@ -1,12 +1,12 @@
 <script setup>
   import {ref} from 'vue';
 
-  const linkMenu =  ref([{title: 'Home', url: '/'}, {title: 'Login', url: '/login'}, {title: 'Register', url: '/register'}]);
+  const linkMenu =  ref([{title: 'Home', url: '/'},{title: 'Tasks', url: '/tasks'}, {title: 'Login', url: '/login'}, {title: 'Register', url: '/register'}]);
   const menuShow = ref(true);
 </script>
 
 <template>
-<header>
+  <header>
     <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
         <router-link to="/" class="flex items-center">
@@ -26,5 +26,21 @@
         </div>
       </div>
     </nav>
-</header>
+  </header>
+<!-- Breadcrumb -->
+
+  <div class="max-w-3xl mx-auto my-0 ">
+    <nav class="flex justify-center py-3 px-5 text-gray-700 bg-gray-50 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 my-4" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <router-link to="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+            <svg class="mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+            {{$route.name}}
+          </router-link>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  
+<!-- Breadcrumb -->
 </template>
