@@ -21,10 +21,10 @@
     }),
     tagUsed: [],
     tagMenuShow: false,
-    tagTitle: ''
+    tagTitle: '',
+    taskTime: '',
+    tags: []
   });
-
-  const tags = ref([ {title: 'Comedy', use: false}, { title: 'Western', use: false}, { title: 'Adventure', use: false}]);
 
   const newTask = (e) => {
     e.preventDefault();
@@ -33,12 +33,10 @@
       return
     }
 
-    let taskTime = ref('');
-
     if(state.taskWhatWatch === 'Film') {
-      taskTime.value = state.filmTime;
+      state.taskTime = state.filmTime;
     } else {
-      taskTime.value = state.serialTime;
+      state.taskTime = state.serialTime;
     }
     
     const task = {
@@ -46,7 +44,8 @@
       title: state.taskTitle,
       description: state.taskDescription,
       whatWatch: state.taskWhatWatch,
-      time: taskTime.value,
+      time: state.taskTime,
+      tagsUsed: state.tagUsed.value,
       completed: false,
       editing: false
     }
@@ -55,9 +54,11 @@
 
     // Reset
     state.taskId += 1
-    state.taskTitle = '';
-    state.taskDescription = '';
-    state.taskWhatWatch = '';
+    state.taskTitle = ''
+    state.taskDescription = ''
+    state.taskWhatWatch = ''
+    state.tags = []
+    state.tagUsed = []
   };
 
   const getHoursAndMinutes = (minutes) => {
@@ -78,8 +79,17 @@
     }
   };
 
-  const newTag = (e) => {
-    console.log(e);
+  const newTag = () => {
+    if(state.tagTitle === '' || state.taskTitle === '') {
+      return;
+    }
+
+    state.tags.push({
+      title: state.tagTitle,
+      use: false
+    })
+
+    state.tagTitle = ''
   };
 
 </script>
@@ -149,26 +159,29 @@
             <p> {{ state.serialTime }} </p>
         </div>
         <!-- Ajouter une nouvelle tag -->
-        <div class="mb-3 flex justify-center items-center p-1 cursor-pointer text-white bg-emerald-400 font-medium text-sm px-4 py-2 focus:outline-none"
+        <div class="mb-3 flex justify-center items-center cursor-pointer text-white bg-emerald-400 px-4 py-2 focus:outline-none"
              @click="state.tagMenuShow = !state.tagMenuShow">
               <span>Nouveau tag</span>
-              <button :class="{hidden: state.tagMenuShow}" style="transform: rotate(45deg)" type="button" class="text-white hover:text-slate-900 text-sm px-1 inline-flex items-center">
+              <button v-if="state.tagMenuShow" style="transform: rotate(45deg)" type="button" class="text-white hover:text-slate-900 text-sm px-1 inline-flex items-center">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
               </button>
-              <button :class="{hidden: !state.tagMenuShow}" type="button" class="text-white hover:text-slate-900 text-sm px-1 inline-flex items-center">
+              <button v-else type="button" class="text-white hover:text-slate-900 text-sm px-1 inline-flex items-center">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
               </button>
         </div>
+        
+        <div class="flex mb-4" v-if="state.tagMenuShow">
         <!-- Afficher le input -->
-        <div class="" v-if="state.tagMenuShow">
-          <input class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm  block w-full p-2.5 focus:border-emerald-400 focus:outline-none mb-4"
-            type="text" placeholder="Libélle du tag" v-model="state.tagTitle" @keyup.enter="newTag">
+          <input class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm mr-2 block p-2.5 focus:border-emerald-400 focus:outline-none"
+            type="text" placeholder="Libélle du tag" v-model="state.tagTitle">
+             <!-- @keyup.enter.stop.prevent="newTag" -->
+            <button @click.stop.prevent="newTag" class="text-white bg-emerald-400 focus:outline-none px-4 py-2">Ajouter</button>
         </div>
         <!-- Afficher tous tags -->
         <div class="mb-3 flex">
-          <div v-for="tag in tags" :key="tag.title" class="flex justify-between items-center p-1 m-1 cursor-pointer w-max" 
+          <div v-for="tag in state.tags" :key="tag.title" class="flex justify-between items-center p-1 m-1 cursor-pointer w-max" 
             @click="addTagUsed(tag)" :class="{ 'bg-emerald-400 text-white' : tag.use}">
-            <span>{{ tag.title }}</span>
+            <span class="capitalize">{{ tag.title }}</span>
             <button type="button" :class="{'text-white' : tag.use, 'text-gray-400' : !tag.use, }" class="hover:text-slate-900 text-sm px-1 inline-flex items-center">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
@@ -178,7 +191,7 @@
         <p>{{ state.tagUsed }}</p>
 
         <!-- tag list -->
-        <button type="submit" class="text-white bg-emerald-400 font-medium text-sm px-4 py-2 focus:outline-none">Ajouter</button>
+        <button type="submit" class="text-white bg-emerald-400 px-4 py-2 focus:outline-none">Ajouter</button>
       </div> 
     </div>
   </form>
