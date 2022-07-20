@@ -45,7 +45,7 @@
       description: state.taskDescription,
       whatWatch: state.taskWhatWatch,
       time: state.taskTime,
-      tagsUsed: state.tagUsed.value,
+      tagsUsed: JSON.parse(JSON.stringify(state.tagUsed)),
       completed: false,
       editing: false
     }
