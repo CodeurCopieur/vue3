@@ -30,7 +30,7 @@
 <!-- Breadcrumb -->
 
   <div class="max-w-3xl mx-auto my-0">
-    <nav class="flex justify-center py-3 px-5 bg-emerald-400 border-b border-gray-200 my-4" aria-label="Breadcrumb">
+    <nav class="flex justify-center py-3 px-5 bg-emerald-500 border-b border-gray-200 my-4" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
           <span class="inline-flex items-center text-sm font-medium text-white">

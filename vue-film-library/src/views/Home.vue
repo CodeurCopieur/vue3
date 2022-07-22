@@ -163,7 +163,7 @@
             <p> {{ state.serialTime }} </p>
         </div>
         <!-- Ajouter une nouvelle tag -->
-        <div class="mb-3 flex justify-center items-center cursor-pointer text-white bg-emerald-400 px-4 py-2 focus:outline-none"
+        <div class="mb-3 flex justify-center items-center cursor-pointer text-white bg-emerald-500 px-4 py-2 focus:outline-none"
              @click="state.tagMenuShow = !state.tagMenuShow">
               <span>Nouveau tag</span>
               <button v-if="state.tagMenuShow" style="transform: rotate(45deg)" type="button" class="text-white hover:text-slate-900 text-sm px-1 inline-flex items-center">
@@ -176,10 +176,10 @@
         
         <div class="flex mb-4" v-if="state.tagMenuShow">
         <!-- Afficher le input -->
-          <input class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm mr-2 block p-2.5 focus:border-emerald-400 focus:outline-none"
+          <input class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm mr-2 block p-2.5 focus:border-emerald-500 focus:outline-none"
             type="text" placeholder="Libélle du tag" v-model="state.tagTitle">
              <!-- @keyup.enter.stop.prevent="newTag" -->
-            <button @click.stop.prevent="newTag" class="text-white bg-emerald-400 focus:outline-none px-4 py-2">Ajouter</button>
+            <button @click.stop.prevent="newTag" class="text-white bg-emerald-500 focus:outline-none px-4 py-2">Ajouter</button>
         </div>
         <!-- Afficher tous tags -->
         <div class="mb-3 flex">
@@ -195,7 +195,7 @@
         <p>{{ state.tagUsed }}</p>
 
         <!-- tag list -->
-        <button type="submit" class="text-white bg-emerald-400 px-4 py-2 focus:outline-none">Ajouter</button>
+        <button type="submit" class="text-white bg-emerald-500 px-4 py-2 focus:outline-none">Ajouter</button>
       </div> 
     </div>
   </form>
