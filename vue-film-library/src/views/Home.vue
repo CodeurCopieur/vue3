@@ -1,8 +1,11 @@
 <script setup>
-  import {ref, reactive, computed} from 'vue'
+  import {reactive, computed} from 'vue'
+  import { useStore } from 'vuex'
+
+  const store = useStore()
 
   const state = reactive({
-    taskId: 3,
+    //taskId: 3,
     taskTitle: '',
     taskDescription: '',
     taskWhatWatch: '',
@@ -40,7 +43,7 @@
     }
     
     const task = {
-      id: state.taskId,
+      //id: state.taskId,
       title: state.taskTitle,
       description: state.taskDescription,
       whatWatch: state.taskWhatWatch,
@@ -50,10 +53,11 @@
       editing: false
     }
 
+    store.dispatch("newTask", task);
     console.log(task);
 
     // Reset
-    state.taskId += 1
+    // state.taskId += 1
     state.taskTitle = ''
     state.taskDescription = ''
     state.taskWhatWatch = ''
@@ -70,7 +74,7 @@
   const addTagUsed = (tag) => {
     tag.use = !tag.use
     if(tag.use) {
-      state.tagUsed.push(tag.title)
+      state.tagUsed.push({title: tag.title})
     } else {
       const found = state.tagUsed.find(elt => elt === tag.title)
       const isLargeNumber = (element) => element === found;
