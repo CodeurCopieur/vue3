@@ -10,7 +10,16 @@ export default {
       return state.tasks
     }
   },
-  mutations: {},
-  actions: {}
+  mutations: {
+    newTask(state, payload) {
+      payload.id = Math.random()
+      state.tasks.push(payload)
+    }
+  },
+  actions: {
+    newTask({commit}, payload) {
+      commit('newTask', payload)
+    }
+  }
   
 }
