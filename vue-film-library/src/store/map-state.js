@@ -19,22 +19,4 @@ const mapGetters = () => {
   )
 }
 
-const mapMutations = () => {
-  const store = useStore()
-  return Object.fromEntries(
-    Object.keys(store._mutations).map(
-      mutation => [mutation, value => store.commit(mutation, value)]
-    )
-  )
-}
-
-const mapActions = () => {
-  const store = useStore()
-  return Object.fromEntries(
-    Object.keys(store._actions).map(
-      action => [action, value => store.dispatch(action, value)]
-    )
-  )
-}
-
-export { mapState, mapGetters, mapMutations, mapActions }
+export { mapState, mapGetters }
