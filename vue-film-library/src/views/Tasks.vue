@@ -1,24 +1,45 @@
 <script setup>
-  // import { computed } from 'vue'
-  // import { useStore } from 'vuex'
+  import { reactive, computed } from 'vue'
+  import { useStore } from 'vuex'
 
-  // const store = useStore()
+  const store = useStore()
 
   // const tasks = computed(()=> store.getters.getTasks)
 
   import { mapGetters } from '../store/map-state'
 
   const { getTasks } = mapGetters();
-  
+  const filter = reactive({f: 'all'});
+
+  const tasksFilter = computed(()=>  {
+    if(filter.f === 'active') {
+      return store.getters.getNotCompletedTasks;
+    } else if(filter.f === 'completed') {
+      return store.getters.getCompletedTasks;
+    } else if(filter.f === 'all') {
+      return store.getters.getTasks;
+    }
+  });
 </script>
 
 <template>
+    <ul role="list" class="flex justify-evenly mb-8">
+      <li>
+        <a class="py-2 pr-4 pl-3 inline-block border-2 border-emerald-500" href="#" @click="filter.f = 'active'" :class="{'bg-emerald-500 text-white': filter.f === 'active' }">Active</a>
+      </li>
+      <li>
+        <a class="py-2 pr-4 pl-3 inline-block border-2 border-emerald-500"  href="#" @click="filter.f  = 'completed'" :class="{'bg-emerald-500 text-white': filter.f === 'completed' }">Completed</a>
+      </li>
+      <li>
+        <a class="py-2 pr-4 pl-3 inline-block border-2 border-emerald-500"  href="#" @click="filter.f  = 'all'" :class="{'bg-emerald-500 text-white': filter.f === 'all' }">All</a>
+      </li>
+    </ul>
     <ul class="text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
     <li  
-        v-for="task in getTasks"
+        v-for="task in tasksFilter"
         :key="task.id"
         :class="{ completed: task.completed }"
-      class="w-full px-4 py-4 border-b border-gray-200 dark:border-gray-600 flex flex-wrap flex-col shadow-lg shadow-emerald-500/50">
+      class="w-full px-4 py-4 border-b border-gray-200 dark:border-gray-600 flex flex-wrap flex-col shadow-lg shadow-emerald-500/50 mb-6">
       <header class="w-full flex justify-between mb-3 relative">
         <div>
           <button type="button" class="w-40 text-white bg-emerald-500 hover:bg-emerald-600 font-medium  text-sm px-5 py-2.5 mr-4 focus:outline-none">{{ task.whatWatch}}</button>
@@ -30,11 +51,11 @@
       </header>
       <div class="flex items-center">
         <div class="flex items-left h-5">
-          <input v-model="task.completed" :id="`${task.id}`" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+          <input v-model="task.completed" :id="`${task.id}`" aria-describedby="helper-checkbox-text" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
         </div>
         <div class="ml-2 text-base">
-            <label :for="`${task.id}`" class="font-medium text-gray-900 dark:text-gray-300">{{ task.title }}</label>
-            <p id="helper-checkbox-text" class="text-sm font-normal text-gray-500 dark:text-gray-300"> {{ task.description}}</p>
+            <label :for="`${task.id}`" :class="{'line-through' : task.completed}" class="font-medium text-gray-900 ">{{ task.title }}</label>
+            <p id="helper-checkbox-text" :class="{'line-through' : task.completed}"  class="text-sm font-normal text-gray-500 "> {{ task.description}}</p>
         </div>
       </div> 
       <footer class="block">
