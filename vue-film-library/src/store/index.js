@@ -1,10 +1,12 @@
 import { createStore } from "vuex";
 
-import task from './task';
+import tasks from './tasks';
+import tags from './tags';
 
 const store = createStore({
   modules: {
-    task
+    tasks,
+    tags
   }
 });
 
