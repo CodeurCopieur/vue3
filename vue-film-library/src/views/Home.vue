@@ -26,7 +26,7 @@
     tagMenuShow: false,
     tagTitle: '',
     taskTime: '',
-    tags: []
+    //tags: [{title: 'Comedie', use:false}, {title: 'Western', use:false}, {title: 'Thriller', use:false}, {title: 'Action', use:false}]
   });
 
   const newTask = (e) => {
@@ -61,7 +61,7 @@
     state.taskTitle = ''
     state.taskDescription = ''
     state.taskWhatWatch = ''
-    state.tags = []
+    //state.tags = []
     state.tagUsed = []
   };
 
@@ -95,6 +95,12 @@
 
     state.tagTitle = ''
   };
+
+  const tags = computed(() => {
+    return store.getters.tags
+  })
+
+  console.log(tags);
 
 </script>
 <template>
@@ -183,8 +189,8 @@
         </div>
         <!-- Afficher tous tags -->
         <div class="mb-3 flex">
-          <div v-for="tag in state.tags" :key="tag.title" class="flex justify-between items-center p-1 m-1 cursor-pointer w-max" 
-            @click="addTagUsed(tag)" :class="{ 'bg-emerald-400 text-white' : tag.use}">
+          <div v-for="tag in tags" :key="tag.title" class="flex justify-between items-center p-1 m-1 cursor-pointer w-max" 
+            @click="addTagUsed(tag)" :class="{ 'bg-emerald-500 text-white' : tag.use}">
             <span class="capitalize">{{ tag.title }}</span>
             <button type="button" :class="{'text-white' : tag.use, 'text-gray-400' : !tag.use, }" class="hover:text-slate-900 text-sm px-1 inline-flex items-center">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
