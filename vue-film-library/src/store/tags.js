@@ -8,10 +8,14 @@ export default {
     }
   },
   mutations: {
-
+    newTag(state, payload) {
+      state.tags.push(payload)
+    }
   },
   actions: {
-
+    newTag({commit}, payload) {
+      commit('newTag', payload)
+    }
   }
   
 }
