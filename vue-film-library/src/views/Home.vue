@@ -32,10 +32,12 @@
   const newTask = (e) => {
     e.preventDefault();
 
+    // si tagTitle est vide 
     if(state.taskTitle === '')  {
       return
     }
 
+    // si taskWhatWatch est égale à Film
     if(state.taskWhatWatch === 'Film') {
       state.taskTime = state.filmTime;
     } else {
@@ -43,7 +45,7 @@
     }
     
     const task = {
-      //id: state.taskId,
+
       title: state.taskTitle,
       description: state.taskDescription,
       whatWatch: state.taskWhatWatch,
@@ -54,10 +56,8 @@
     }
 
     store.dispatch("newTask", task);
-    console.log(task);
 
     // Reset
-    // state.taskId += 1
     state.taskTitle = ''
     state.taskDescription = ''
     state.taskWhatWatch = ''
@@ -65,6 +65,7 @@
     state.tagUsed = []
   };
 
+  // fonction qui convertie en heures et minutes
   const getHoursAndMinutes = (minutes) => {
     let hours = Math.trunc(minutes / 60)
     let min = minutes % 60
@@ -84,23 +85,29 @@
   };
 
   const newTag = () => {
+    // si tagTitle ou taskTitle est vide 
     if(state.tagTitle === '' || state.taskTitle === '') {
       return;
     }
 
-    state.tags.push({
+    // state.tags.push({
+    //   title: state.tagTitle,
+    //   use: false
+    // })
+
+    const tag = {
       title: state.tagTitle,
       use: false
-    })
+    }
 
+    // on vide tagTitle 
     state.tagTitle = ''
   };
 
+  // recupère les tags présent dans les getters tags
   const tags = computed(() => {
     return store.getters.tags
-  })
-
-  console.log(tags);
+  });
 
 </script>
 <template>
