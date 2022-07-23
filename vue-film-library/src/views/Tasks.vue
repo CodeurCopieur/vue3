@@ -4,13 +4,13 @@
 
   const store = useStore()
 
-  // const tasks = computed(()=> store.getters.getTasks)
-
   import { mapGetters } from '../store/map-state'
 
+  // accéder aux getters
   const { getTasks } = mapGetters();
   const filter = reactive({f: 'all'});
 
+  // retourner un getters en fonction du filter.f
   const tasksFilter = computed(()=>  {
     if(filter.f === 'active') {
       return store.getters.getNotCompletedTasks;
@@ -23,7 +23,7 @@
 </script>
 
 <template>
-    <ul role="list" class="flex justify-evenly mb-8">
+  <ul role="list" class="flex justify-evenly mb-8">
       <li>
         <a class="py-2 pr-4 pl-3 inline-block border-2 border-emerald-500" href="#" @click="filter.f = 'active'" :class="{'bg-emerald-500 text-white': filter.f === 'active' }">Active</a>
       </li>
@@ -33,8 +33,8 @@
       <li>
         <a class="py-2 pr-4 pl-3 inline-block border-2 border-emerald-500"  href="#" @click="filter.f  = 'all'" :class="{'bg-emerald-500 text-white': filter.f === 'all' }">All</a>
       </li>
-    </ul>
-    <ul class="text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+  </ul>
+  <ul class="text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
     <li  
         v-for="task in tasksFilter"
         :key="task.id"
@@ -45,7 +45,7 @@
           <button type="button" class="w-40 text-white bg-emerald-500 hover:bg-emerald-600 font-medium  text-sm px-5 py-2.5 mr-4 focus:outline-none">{{ task.whatWatch}}</button>
           <span>Total Time : {{task.time}}</span>
         </div>
-        <button type="button" class="text-gray-400 bg-transparent hover:bg-emerald-500 hover:text-white h-6 top-0 text-sm px-1 inline-flex items-center" data-modal-toggle="defaultModal">
+        <button type="button" class="text-emerald-500 bg-transparent hover:bg-emerald-500 hover:text-white h-6 top-0 text-sm px-1 inline-flex items-center" data-modal-toggle="defaultModal">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         </button>
       </header>
