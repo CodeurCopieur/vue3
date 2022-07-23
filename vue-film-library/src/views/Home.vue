@@ -26,7 +26,10 @@
     tagMenuShow: false,
     tagTitle: '',
     taskTime: '',
-    //tags: [{title: 'Comedie', use:false}, {title: 'Western', use:false}, {title: 'Thriller', use:false}, {title: 'Action', use:false}]
+    // recupère les tags présent dans les getters tags
+    tags: computed(() => {
+      return store.getters.tags
+    })
   });
 
   const newTask = (e) => {
@@ -61,8 +64,14 @@
     state.taskTitle = ''
     state.taskDescription = ''
     state.taskWhatWatch = ''
-    //state.tags = []
     state.tagUsed = []
+
+    // Parcourir state.tags(getters tags) afin de rest use:false de chaque tag
+
+    for (let index = 0; index < state.tags.length; index++) {
+      const element = state.tags[index];
+      JSON.parse(JSON.stringify(element.use = false));
+    }
   };
 
   // fonction qui convertie en heures et minutes
@@ -71,13 +80,13 @@
     let min = minutes % 60
     return hours + ' Heures ' + min + ' Minutes'
   };
-
+  // click sur un tag push vers tagUsed 
   const addTagUsed = (tag) => {
     tag.use = !tag.use
     if(tag.use) {
-      state.tagUsed.push({title: tag.title})
+      state.tagUsed.push({title: tag.title, use: tag.use})
     } else {
-      const found = state.tagUsed.find(elt => elt === tag.title)
+      const found = state.tagUsed.find(elt => elt.title === tag.title)
       const isLargeNumber = (element) => element === found;
 
       state.tagUsed.splice(state.tagUsed.findIndex(isLargeNumber), 1)
@@ -90,24 +99,17 @@
       return;
     }
 
-    // state.tags.push({
-    //   title: state.tagTitle,
-    //   use: false
-    // })
-
     const tag = {
       title: state.tagTitle,
       use: false
     }
+    store.dispatch("newTag", tag);
 
     // on vide tagTitle 
     state.tagTitle = ''
   };
 
-  // recupère les tags présent dans les getters tags
-  const tags = computed(() => {
-    return store.getters.tags
-  });
+  
 
 </script>
 <template>
@@ -196,7 +198,7 @@
         </div>
         <!-- Afficher tous tags -->
         <div class="mb-3 flex">
-          <div v-for="tag in tags" :key="tag.title" class="flex justify-between items-center p-1 m-1 cursor-pointer w-max" 
+          <div v-for="tag in state.tags" :key="tag.title" class="flex justify-between items-center p-1 m-1 cursor-pointer w-max" 
             @click="addTagUsed(tag)" :class="{ 'bg-emerald-500 text-white' : tag.use}">
             <span class="capitalize">{{ tag.title }}</span>
             <button type="button" :class="{'text-white' : tag.use, 'text-gray-400' : !tag.use, }" class="hover:text-slate-900 text-sm px-1 inline-flex items-center">
