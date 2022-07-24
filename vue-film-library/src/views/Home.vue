@@ -80,7 +80,7 @@
     let min = minutes % 60
     return hours + ' Heures ' + min + ' Minutes'
   };
-  // click sur un tag push vers tagUsed 
+  // click sur un tag push vers tagUsed ou retire le tag(use:true) sur lequel j'ai cliqué
   const addTagUsed = (tag) => {
     tag.use = !tag.use
     if(tag.use) {
@@ -120,16 +120,16 @@
 <!-- Form -->
   <form @submit="newTask">
     <div class="grid gap-6">
-      <div class="mx-auto">
+      <div class="sm:mx-auto md:mx-0 px-4 md:px-0">
         <input type="text" 
           v-model="state.taskTitle"
           name="taskTitle"
-          id="taskTitle" class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm block w-full p-2.5 mb-4 focus:border-emerald-400 focus:outline-none" placeholder="Ce que nous allons regarder ?">
+          id="taskTitle" class="border-b border-gray-300 text-gray-900 text-sm block w-full p-2.5 mb-4 focus:border-emerald-400 focus:outline-none" placeholder="Ce que nous allons regarder ?">
         <textarea 
           name="taskDescription" 
           id="taskDescription" 
           v-model="state.taskDescription" 
-          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 border-b border-gray-300 focus:border-emerald-400 focus:outline-none mb-4" placeholder="Votre message ?"
+          class="block p-2.5 w-full text-sm text-gray-900 border-b border-gray-300 focus:border-emerald-400 focus:outline-none mb-4" placeholder="Votre message ?"
           cols="30" rows="5"></textarea>
         <div class="flex flex-wrap mb-4">
           <div class="flex items-center mr-4">
@@ -189,15 +189,15 @@
               </button>
         </div>
         
-        <div class="flex mb-4" v-if="state.tagMenuShow">
+        <div class="flex flex-wrap mb-4" v-if="state.tagMenuShow">
         <!-- Afficher le input -->
-          <input class="bg-gray-50 border-b border-gray-300 text-gray-900 text-sm mr-2 block p-2.5 focus:border-emerald-500 focus:outline-none"
+          <input class="border-b border-gray-300 text-gray-900 text-sm mr-2 block p-2.5 focus:border-emerald-500 focus:outline-none w-full md:w-2/4 mb-4 md:mb-0"
             type="text" placeholder="Libélle du tag" v-model="state.tagTitle">
              <!-- @keyup.enter.stop.prevent="newTag" -->
-            <button @click.stop.prevent="newTag" class="text-white bg-emerald-500 focus:outline-none px-4 py-2">Ajouter</button>
+            <button @click.stop.prevent="newTag" class="w-full md:w-2/5 text-white bg-emerald-500 focus:outline-none px-4 py-2">Ajouter</button>
         </div>
         <!-- Afficher tous tags -->
-        <div class="mb-3 flex">
+        <div class="flex flex-wrap mb-3">
           <div v-for="tag in state.tags" :key="tag.title" class="flex justify-between items-center p-1 m-1 cursor-pointer w-max" 
             @click="addTagUsed(tag)" :class="{ 'bg-emerald-500 text-white' : tag.use}">
             <span class="capitalize">{{ tag.title }}</span>
