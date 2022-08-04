@@ -17,6 +17,8 @@
     "vue": "^3.2.36"
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.0-alpha.43",
+    "@vuelidate/validators": "^2.0.0-alpha.31",
     "sass-loader": "^13.0.2",
     "vue-router": "^4.1.0",
     "vuex": "^4.0.2"
