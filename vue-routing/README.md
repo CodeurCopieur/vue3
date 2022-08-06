@@ -1,4 +1,4 @@
-## Vue Router | Vue 3 + Vite | TailwindCSS
+## Vue3 Routing
 
   * Implémenter la configuration du routage vue à l'aide du routeur vue dans Vue js | Vue 3.
 
