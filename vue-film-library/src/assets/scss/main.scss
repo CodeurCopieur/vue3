@@ -8,3 +8,14 @@
 .router-link-active.router-link-exact-active {
   color: #10B981;
 }
+
+// Animation for Tasks
+// Active
+.fade-enter-active, .fade-leave-active {
+  transition: all .6s;
+}
+// Enter
+.fade-enter, .fade-leave-to{
+  opacity: 0;
+  transform: translateY(10px);
+}
