@@ -29,7 +29,8 @@
     // recupère les tags présent dans les getters tags
     tags: computed(() => {
       return store.getters.tags
-    })
+    }),
+    submitStatus: '',
   });
 
   const newTask = (e) => {
@@ -48,7 +49,6 @@
     }
     
     const task = {
-
       title: state.taskTitle,
       description: state.taskDescription,
       whatWatch: state.taskWhatWatch,
@@ -186,23 +186,28 @@
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
               </button>
         </div>
-        
-        <div class="flex flex-wrap mb-4" v-if="state.tagMenuShow">
-        <!-- Afficher le input -->
-          <input class="border-b border-gray-300 text-gray-900 text-sm mr-2 block p-2.5 focus:border-emerald-500 focus:outline-none w-full md:w-2/4 mb-4 md:mb-0"
+
+        <transition enter-active-class="animate__animated animate__fadeInUp" leave-active-class="animate__animated animate__fadeOutDown">
+          <div class="flex flex-wrap mb-4" v-if="state.tagMenuShow">
+          <!-- Afficher le input -->
+          
+            <input class="border-b border-gray-300 text-gray-900 text-sm mr-2 block p-2.5 focus:border-emerald-500 focus:outline-none w-full md:w-2/4 mb-4 md:mb-0"
             type="text" placeholder="Libélle du tag" v-model="state.tagTitle">
              <!-- @keyup.enter.stop.prevent="newTag" -->
             <button @click.stop.prevent="newTag" class="w-full md:w-2/5 text-white bg-emerald-500 focus:outline-none px-4 py-2">Ajouter</button>
-        </div>
+          </div>
+        </transition>
         <!-- Afficher tous tags -->
         <div class="flex flex-wrap mb-3">
-          <div v-for="tag in state.tags" :key="tag.title" class="flex justify-between items-center p-1 m-1 cursor-pointer w-max" 
-            @click="addTagUsed(tag)" :class="{ 'bg-emerald-500 text-white' : tag.use}">
-            <span class="capitalize">{{ tag.title }}</span>
-            <button type="button" :class="{'text-white' : tag.use, 'text-gray-400' : !tag.use, }" class="hover:text-slate-900 text-sm px-1 inline-flex items-center">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-            </button>
-          </div>
+          <transition-group enter-active-class="animate__animated animate__fadeInRight" leave-active-class="animate__animated animate__fadeOutDown">
+            <div v-for="tag in state.tags" :key="tag.title" class="flex justify-between items-center p-1 m-1 cursor-pointer w-max" 
+              @click="addTagUsed(tag)" :class="{ 'bg-emerald-500 text-white' : tag.use}">
+              <span class="capitalize">{{ tag.title }}</span>
+              <button type="button" :class="{'text-white' : tag.use, 'text-gray-400' : !tag.use, }" class="hover:text-slate-900 text-sm px-1 inline-flex items-center">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </button>
+            </div>
+          </transition-group> 
         </div>
 
         <p>{{ state.tagUsed }}</p>
@@ -213,7 +218,4 @@
     </div>
   </form>
 <!-- Form -->
-
-
-
 </template>
