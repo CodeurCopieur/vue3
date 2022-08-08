@@ -79,15 +79,20 @@
             <p class="text-red-500 text-xs italic" v-for="error in v$.password.confirm.$errors" :key="error.$uid"> {{error.$message}}</p>
         </div>
       </div>
-
-      <button
+      <div class="text-center">
+        <button
           :disabled="state.submitStatus === 'PENDING'"
-          class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 mt-4 focus:outline-none focus:shadow-outline"
+          class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-4 mt-4 focus:outline-none focus:shadow-outline"
           type="submit">Sign In</button>
-      
-      <p class="text-emerald-500 mt-4" v-if="state.submitStatus === 'OK'">Merci pour votre soumission!</p>
-      <p class="text-red-500 mt-4" v-if="state.submitStatus === 'ERROR'">Veuillez remplir le formulaire correctement.</p>
-      <p class="text-yellow-500 mt-4" v-if="state.submitStatus === 'PENDING'">Envoi en cours...</p>
+
+        <p class="text-emerald-500 mt-4" v-if="state.submitStatus === 'OK'">Merci pour votre soumission!</p>
+        <p class="text-red-500 mt-4" v-if="state.submitStatus === 'ERROR'">Veuillez remplir le formulaire correctement.</p>
+        <p class="text-yellow-500 mt-4" v-if="state.submitStatus === 'PENDING'">Envoi en cours...</p>
+      </div>
+
+      <div class="mt-4 px-4 md:px-0 text-center">
+        <span> Avez-vous un compte ?</span>  <router-link to="/login" class="text-sky-500">Entrer ici</router-link>
+      </div>
     </form>
   </div>
 </template>
