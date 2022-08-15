@@ -9,7 +9,6 @@
       axios
         .get('https://vue-apimoviedb-get-request.firebaseio.com/posts.json')
         .then( res => {
-          console.log(res.data)
           formatPosts(res.data)
         })
     } catch(err) {
