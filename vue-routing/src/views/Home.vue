@@ -17,9 +17,5 @@
     <button
         @click.prevent="onPostClick('/posts')"
         class="bg-sky-600 hover:bg-sky-500 focus:outline-none focus:ring focus:ring-sky-300 active:bg-sky-500 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white">Click to Post page</button>
-
-    <!-- <button
-        @click.prevent="onPostClick('/createPost')"
-        class="bg-sky-600 hover:bg-sky-500 focus:outline-none focus:ring focus:ring-sky-300 active:bg-sky-500 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white">Click to Create Post page</button> -->
   </div>
 </template>

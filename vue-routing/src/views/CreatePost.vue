@@ -11,7 +11,7 @@
 
   const onCreatePost = (e) => {
     console.log(e);
-    axios.post('https://vue-apimoviedb-get-request.firebaseio.com/posts.json', {
+    axios.post('posts.json', {
       title: state.title,
       desc: state.desc
     }).then( res => {
