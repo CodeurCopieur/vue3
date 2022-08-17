@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import NotFound from '../views/NotFound.vue'
 import Posts from '../views/Posts.vue'
 import PostItem from '../views/PostItem.vue'
 import CreatePost from '../views/CreatePost.vue'
@@ -8,6 +9,8 @@ import { Axios } from 'axios'
 const routes = [
   {
     path: '/',
+    // alias: '/',
+    // redirect: '/posts',
     name: 'Home',
     component: Home
   },
@@ -26,6 +29,11 @@ const routes = [
     path: '/createPost',
     name: 'CreatePost',
     component: CreatePost
+  }, 
+  {
+    path: '/:NotFound(.*)*',
+    name: 'NotFound',
+    component: NotFound
   }
 ];
 
