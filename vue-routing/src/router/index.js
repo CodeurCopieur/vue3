@@ -19,7 +19,8 @@ const routes = [
   {
     path: '/posts/:id',
     name: 'PostItem',
-    component: PostItem
+    component: PostItem,
+    props: true
   },
   {
     path: '/createPost',
