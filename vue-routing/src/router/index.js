@@ -3,8 +3,8 @@ import Home from '../views/Home.vue'
 import NotFound from '../views/NotFound.vue'
 import Posts from '../views/Posts.vue'
 import PostItem from '../views/PostItem.vue'
+import NoPost from '../views/NoPost.vue'
 import CreatePost from '../views/CreatePost.vue'
-import { Axios } from 'axios'
 
 const routes = [
   {
@@ -17,14 +17,26 @@ const routes = [
   {
     path: '/posts',
     name: 'Posts',
-    component: Posts
+    component: Posts,
+    children: [
+      {
+        path: '',
+        component: NoPost
+      },
+      {
+        path: ':id',
+        name: 'PostItem',
+        component: PostItem,
+        props: true
+      }
+    ]
   },
-  {
-    path: '/posts/:id',
-    name: 'PostItem',
-    component: PostItem,
-    props: true
-  },
+  // {
+  //   path: '/posts/:id',
+  //   name: 'PostItem',
+  //   component: PostItem,
+  //   props: true
+  // },
   {
     path: '/createPost',
     name: 'CreatePost',
