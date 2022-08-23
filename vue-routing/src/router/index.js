@@ -15,7 +15,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/posts',
+    path: '/blog',
     name: 'Posts',
     component: Posts,
     children: [
@@ -24,11 +24,18 @@ const routes = [
         component: NoPost
       },
       {
+        name: 'single-post',
         path: ':id',
-        name: 'PostItem',
+        // name: 'PostItem',
         component: PostItem,
         props: true
       }
+      // {
+      //   path: ':id',
+      //   name: 'PostItem',
+      //   component: PostItem,
+      //   props: true
+      // }
     ]
   },
   // {

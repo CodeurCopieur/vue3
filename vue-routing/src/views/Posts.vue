@@ -65,10 +65,15 @@
                     </td>
                     <td class="py-4 px-6 flex">
                         <router-link
-                          :to="`/posts/${post.id}`"
+                          :to="{
+                            name: 'single-post', 
+                            params: {id: post.id},
+                            query: {sort: 'asc'}
+                          }"
                           class="bg-sky-600 hover:bg-sky-500 focus:outline-none focus:ring focus:ring-sky-300 active:bg-sky-500 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white mr-2">Show Details</router-link>
                       </td>
                     </tr>
+                    <!-- `/posts/${post.id}` -->
               </tbody>
             </table>
           </div>

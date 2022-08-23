@@ -6,8 +6,10 @@
       </router-link>
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
         <router-link to='/' class="mr-5 font-medium hover:text-red-600">Home</router-link>
-        <router-link to='/posts' class="mr-5 font-medium hover:text-red-600">Posts</router-link>
-        <router-link to='/createPost' class="mr-5 font-medium hover:text-red-600">Create Post</router-link>
+        <router-link :to="{name:'Posts'}" class="mr-5 font-medium hover:text-red-600">Posts</router-link>
+        <!-- <router-link to='/posts' class="mr-5 font-medium hover:text-red-600">Posts</router-link> -->
+        <router-link :to="{name:'CreatePost'}" class="mr-5 font-medium hover:text-red-600">Create Post</router-link>
+        <!-- <router-link to='/createPost' class="mr-5 font-medium hover:text-red-600">Create Post</router-link> -->
       </nav>
     </div>
   </header>
