@@ -19,3 +19,24 @@
   opacity: 0;
   transform: translateY(10px);
 }
+
+// Inputs validate
+.border-red-500 {
+  animation-name: shake;
+  animation-duration: .4s;
+  animation-fill-mode: both;
+}
+
+@keyframes shake {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
