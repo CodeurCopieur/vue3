@@ -1,11 +1,12 @@
 <script setup>
   import {reactive, computed} from 'vue'
   import { useStore } from 'vuex'
+  import {useVuelidate}  from '@vuelidate/core'
+  import { required, minLength, helpers } from '@vuelidate/validators'
 
   const store = useStore()
 
   const state = reactive({
-    //taskId: 3,
     taskTitle: '',
     taskDescription: '',
     taskWhatWatch: '',
@@ -30,14 +31,46 @@
     tags: computed(() => {
       return store.getters.tags
     }),
-    submitStatus: '',
+    submitStatus: ''
   });
 
+  const rules = computed( () => {
+    return {
+      taskTitle: {
+        required: helpers.withMessage("Le titre est requis", required)
+      },
+      taskDescription: {
+        required: helpers.withMessage("La description est requis", required)
+      }
+    }
+  })
+
+  const v$ = useVuelidate(rules, state)
+
+  const onSubmit = async ()=> {
+    const res = await v$.value.$validate();
+
+    if (res) {
+      console.log("SEND");
+      state.submitStatus = "PENDING";
+
+      setTimeout(() => {
+        state.submitStatus = "OK";
+        newTask();
+        // Reset v$ (validate)
+        v$.value.$reset();
+      }, 500)
+    } else {
+      state.submitStatus = "ERROR";
+      console.log("ERROR");
+    }
+  }
+
   const newTask = (e) => {
-    e.preventDefault();
 
     // si tagTitle est vide 
     if(state.taskTitle === '')  {
+      state.emptyTitle = 'Ce champ est vide'
       return
     }
 
@@ -65,6 +98,7 @@
     state.taskDescription = ''
     state.taskWhatWatch = ''
     state.tagUsed = []
+    state.emptyTitle = ''
 
     // Parcourir state.tags(getters tags) afin de rest use:false de chaque tag
 
@@ -116,19 +150,28 @@
 
 
 <!-- Form -->
-  <form @submit="newTask">
+  <form @submit.prevent="onSubmit">
     <div class="grid gap-6">
       <div class="sm:mx-auto md:mx-0 px-4 md:px-0">
+
         <input type="text" 
           v-model="state.taskTitle"
           name="taskTitle"
+          @blur="v$.taskTitle.$touch()"
+          :class="{ 'border-red-500' : v$.taskTitle.$error, 'border-emerald-500': !v$.taskTitle.$invalid}"
           id="taskTitle" class="border-b border-gray-300 text-gray-900 text-sm block w-full p-2.5 mb-4 focus:border-emerald-400 focus:outline-none" placeholder="Ce que nous allons regarder ?">
+          <p class="text-red-500 text-xs italic" v-for="error in v$.taskTitle.$errors" :key="error.$uid">{{error.$message}}</p>
+
         <textarea 
           name="taskDescription" 
+          @blur="v$.taskDescription.$touch()"
+          :class="{ 'border-red-500' : v$.taskDescription.$error, 'border-emerald-500': !v$.taskDescription.$invalid}"
           id="taskDescription" 
           v-model="state.taskDescription" 
           class="block p-2.5 w-full text-sm text-gray-900 border-b border-gray-300 focus:border-emerald-400 focus:outline-none mb-4" placeholder="Votre message ?"
           cols="30" rows="5"></textarea>
+          <p class="text-red-500 text-xs italic mb-4" v-for="error in v$.taskDescription.$errors" :key="error.$uid"> {{error.$message}} lol</p>
+
         <div class="flex flex-wrap mb-4">
           <div class="flex items-center mr-4">
             <input id="radioFilm" type="radio" v-model="state.taskWhatWatch" value="Film" class="w-4 h-4 bg-gray-100 border-emerald-400 focus:border-emerald-400 focus:outline-none">
@@ -210,10 +253,15 @@
           </transition-group> 
         </div>
 
-        <p>{{ state.tagUsed }}</p>
+        <!-- <p>{{ state.tagUsed }}</p> -->
 
         <!-- tag list -->
-        <button type="submit" class="text-white bg-emerald-500 px-4 py-2 focus:outline-none">Ajouter</button>
+
+        <div class="text-center">
+          <button type="submit" 
+          :disabled="state.submitStatus === 'PENDING'"
+          class="text-white bg-emerald-500 px-4 py-2 focus:outline-none">Ajouter</button>
+        </div>
       </div> 
     </div>
   </form>
