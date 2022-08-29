@@ -5,7 +5,9 @@ import Posts from '../views/Posts.vue'
 import PostItem from '../views/PostItem.vue'
 import NoPost from '../views/NoPost.vue'
 import CreatePost from '../views/CreatePost.vue'
-
+import PostsFooter from '../components/PostsFooter.vue'
+import CreatePostFooter from '../components/CreatePostFooter.vue'
+import Header from '../components/Header.vue'
 const routes = [
   {
     path: '/',
@@ -15,12 +17,18 @@ const routes = [
     component: Home
   },
   {
-    path: '/blog',
+    path: '/posts',
     name: 'Posts',
-    component: Posts,
+    components: {
+      default: Posts,
+      footer: PostsFooter,
+      navigation: Header,
+    },
+    // component: Posts,
     children: [
       {
         path: '',
+        name: 'nopost',
         component: NoPost
       },
       {
@@ -47,7 +55,12 @@ const routes = [
   {
     path: '/createPost',
     name: 'CreatePost',
-    component: CreatePost
+    // component: CreatePost
+    components: {
+      default: CreatePost,
+      footer: CreatePostFooter,
+      navigation: Header,
+    }
   }, 
   {
     path: '/:NotFound(.*)*',
