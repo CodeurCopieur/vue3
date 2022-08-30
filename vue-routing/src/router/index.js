@@ -75,4 +75,17 @@ const router = createRouter({
   linkActiveClass: 'text-red-600'
 });
 
+router.beforeEach((to, from, next)=> {
+  console.log(to);
+  console.log(from);
+  // next(true)
+  if(to.path === '/createPost'){
+    // router.push('/test');
+    // next('/test')
+    next({name: 'single-post', params: {id: '-N9Y2z5yOhtknKWfsjaW'}})
+  } else {
+    next()
+  }
+})
+
 export default router
