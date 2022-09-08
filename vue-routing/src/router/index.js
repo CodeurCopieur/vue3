@@ -24,6 +24,9 @@ const routes = [
       footer: PostsFooter,
       navigation: Header,
     },
+    beforeEnter: () => {
+      console.log('route based before each');
+    },
     // component: Posts,
     children: [
       {
@@ -75,17 +78,22 @@ const router = createRouter({
   linkActiveClass: 'text-red-600'
 });
 
-router.beforeEach((to, from, next)=> {
-  console.log(to);
-  console.log(from);
+router.beforeEach((to, _1, next)=> {
+  //to, from, next
+  console.log('global before each');
   // next(true)
   if(to.path === '/createPost'){
     // router.push('/test');
     // next('/test')
-    next({name: 'single-post', params: {id: '-N9Y2z5yOhtknKWfsjaW'}})
+    // next({name: 'single-post', params: {id: '-N9Y2z5yOhtknKWfsjaW'}})
+    next()
   } else {
     next()
   }
+})
+
+router.afterEach((to, _1)=> {
+  console.log('router after each');
 })
 
 export default router

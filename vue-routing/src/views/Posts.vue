@@ -1,6 +1,11 @@
 <script setup>
   import axios from 'axios'
   import {ref, onMounted } from 'vue'
+  import { useRoute } from 'vue-router'
+  const route = useRoute()
+  
+
+  // console.log(route.matched[0].beforeEnter);
 
    const postDetails  = ref([]);
 
@@ -15,6 +20,11 @@
       console.log(err);
     }
   });
+
+  route.matched[0].beforeEnter = console.log('component based before each');
+  // beforeRouteLeave( (to, from, next) => {
+  //   console.log(to);
+  // });
 
   const formatPosts = ( postData ) => {
     for (var key in postData) {
