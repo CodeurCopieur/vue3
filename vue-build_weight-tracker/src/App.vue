@@ -29,7 +29,28 @@ const addWeight = () => {
     <span>{{ currentWeight.weight }}</span><small> Poids actuel (kg)</small>
   </div>
 
+  <form @submit.prevent="addWeight">
+    <input type="number" step="0.1" v-model="weightInput"/>
+    <input type="submit" value="Ajouter du poids"/>
+  </form>
 
+  <div v-if="weights && weights.length > 0">
+    <h2>Les 7 derniers jours</h2>
+
+    <div class="canvas-box">
+      <canvas ref="weightChartEl"></canvas>
+    </div>
+
+    <div class="weight-history">
+      <h2>Historique du poids</h2>
+      <ul>
+        <li v-for="weight in weights" :key="weight">
+          <span>{{ weight.weight }} kg </span>
+          <small>{{ new Date(weight.date).toLocaleDateString() }}</small>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <style>
