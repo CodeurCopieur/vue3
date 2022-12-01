@@ -20,6 +20,53 @@ const addWeight = () => {
   })
 };
 
+watch(weights, newWeights => {
+  const ws = [...newWeights]
+
+  if (weightChart.value) {
+    weightChart.value.data.labels = ws
+        .sort((a, b) => a.date - b.date)
+        .map(w => new Date(w.date).toLocaleDateString())
+        .slice(-7)
+
+    weightChart.value.data.datasets[0].data = ws
+        .sort((a, b) => a.date - b.date)
+        .map(w => w.weight )
+        .slice(-7)
+
+    weightChart.value.update()
+
+    return
+  }
+
+  nextTick(()=> {
+    weightChart.value = new Chart(weightChartEl.value.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ws
+            .sort((a, b) => a.date - b.date)
+            .map(w => new Date(w.date).toLocaleDateString()),
+        datasets: [
+          {
+            label: 'Weight',
+            data: ws
+              .sort((a,b) => a.date - b.date)
+              .map(w => w.weight),
+            backgroundColor: 'rgba(255, 105, 180, .2)',
+            borderColor: 'rgb(255, 105, 180)',
+            borderWidth: 1,
+            fill: true
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    })
+  })
+}, { deep: true });
+
 </script>
 
 <template>
