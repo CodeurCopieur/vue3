@@ -1,7 +1,17 @@
-# Vue 3 + Vite
+## Vue3 : Build a Todo List App in Vue JS with LocalStorage
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+  * Créer une application de liste de tâchesavec Vue JS et l'API de composition. 
+  * Bases de l'API Vue Composition ainsi que certaines fonctionnalités plus avancées telles que LocalStorage pour enregistrer des données dans le navigateur.
 
-## Recommended IDE Setup
+## Installation
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+```bash
+  npm install
+  yarn install
+  npm run dev
+```
+### Tech Stack
+
+**Client:** Vite, Vue3
+
+
