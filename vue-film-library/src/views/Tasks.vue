@@ -7,17 +7,17 @@
   import { mapGetters } from '../store/map-state'
 
   // accéder aux getters
-  const { getTasks } = mapGetters();
+  const { getTasks, getCompletedTasks, getNotCompletedTasks } = mapGetters();
   const filter = reactive({f: 'all'});
 
   // retourner un getters en fonction du filter.f
   const tasksFilter = computed(()=>  {
     if(filter.f === 'active') {
-      return store.getters.getNotCompletedTasks;
+      return getNotCompletedTasks.value;
     } else if(filter.f === 'completed') {
-      return store.getters.getCompletedTasks;
+      return getCompletedTasks.value;
     } else if(filter.f === 'all') {
-      return store.getters.getTasks;
+      return getTasks.value;
     }
   });
 </script>
