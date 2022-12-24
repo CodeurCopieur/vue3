@@ -1,4 +1,4 @@
-## Vue3 Routing
+## Vue3 : Build a Weight Tracker
 
   * Outil de suivi du poids à l'aide de Vue JS et de l'API de composition. Nous utilisons la montre de Vue, nextTick, ref, shallowRef et calculé avec Chart JS pour créer un suivi visuel du poids.
 
