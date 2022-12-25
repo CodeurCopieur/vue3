@@ -9,12 +9,26 @@ const input_category = ref(null) // type de catégorie de la tâches (business |
 
 const todo_asc = computed(() => todos.value.sort( (a,b ) => b.createdAt - a.createdAt))
 
+watch(todos, newVal => localStorage.setItem('todos', JSON.stringify(newVal)), {deep: true}) // on observe todos et on insere dans le localstorage
 watch(name, newVal => localStorage.setItem('name', newVal)) // on observe name et on insere dans le localstorage
 
-onMounted(() => name.value = localStorage.getItem('name') || '') // au montage du DOM si dans le localstorage  la clé 'name' existe on affecte à la variable name la valeur de la clé 'name'
+onMounted(() => {
+  name.value = localStorage.getItem('name') || ''; // au montage du DOM si dans le localstorage  la clé 'name' existe on affecte à la variable name la valeur de la clé 'name' sinon c'est vide
+  todos.value = JSON.parse(localStorage.getItem('todos')) || [] // au montage du DOM si dans le localstorage  la clé 'todos' existe on affecte à la variable name la valeur de la clé 'todos' sinon c'est vide
+  }) 
 
 const addTodo = () => {
 
+  if(input_content.value.trim() === "" || input_category.value === null) {
+    return
+  }
+
+  todos.value.push({
+    content: input_content.value,
+    category: input_category.value,
+    done: false,
+    createdAt: new Date().getTime()
+  })
 };
 </script>
 
@@ -56,5 +70,7 @@ const addTodo = () => {
 
       </form>
     </section>
+
+    {{ todo_asc }}
   </main>
 </template>

@@ -78,7 +78,7 @@ h4 {
 	padding: 1rem 1.5rem;
 	color: var(--dark);
 	background-color: #FFF;
-	border-radius: 0.5rem;
+/* border-radius: 0.5rem; */
 	box-shadow: var(--shadow);
 	margin-bottom: 1.5rem;
 }
@@ -97,7 +97,7 @@ h4 {
 	justify-content: center;
 	padding: 1.5rem;
 	background-color: #FFF;
-	border-radius: 0.5rem;
+/* border-radius: 0.5rem; */
 	box-shadow: var(--shadow);
 	cursor: pointer;
 }
@@ -159,7 +159,7 @@ input:checked ~ .bubble::after {
 	padding: 1rem 1.5rem;
 	color: #FFF;
 	background-color: var(--primary);
-	border-radius: 0.5rem;
+/* border-radius: 0.5rem; */
 	box-shadow: var(--personal-glow);
 	cursor: pointer;
 	transition: 0.2s ease-in-out;
@@ -178,7 +178,7 @@ input:checked ~ .bubble::after {
 	align-items: center;
 	background-color: #FFF;
 	padding: 1rem;
-	border-radius: 0.5rem;
+/* border-radius: 0.5rem; */
 	box-shadow: var(--shadow);
 	margin-bottom: 1rem;
 }
