@@ -7,7 +7,7 @@ const name = ref('') // prénom du  user
 const input_content = ref('') // titre de la tâche
 const input_category = ref(null) // type de catégorie de la tâches (business | personal)
 
-const todo_asc = computed(() => todos.value.sort( (a,b ) => b.createdAt - a.createdAt))
+const todo_asc = computed(() => todos.value.sort( (a,b ) => a.createdAt - b.createdAt))
 
 watch(todos, newVal => localStorage.setItem('todos', JSON.stringify(newVal)), {deep: true}) // on observe todos et on insere dans le localstorage
 watch(name, newVal => localStorage.setItem('name', newVal)) // on observe name et on insere dans le localstorage
@@ -29,6 +29,10 @@ const addTodo = () => {
     done: false,
     createdAt: new Date().getTime()
   })
+
+  // Reset
+  input_content.value = ""
+  input_category.value = null
 };
 </script>
 
@@ -71,6 +75,22 @@ const addTodo = () => {
       </form>
     </section>
 
-    {{ todo_asc }}
+    <section class="todo-list">
+      <h3>Liste de choses à faire</h3>
+      <div class="list">
+
+        <div v-for="todo in todo_asc" :key="todo" :class="`todo-item ${todo.done && 'done'}`">
+          <label>
+            <input type="checkbox" v-model="todo.done"/>
+            <span :class="`bubble ${todo.category === 'business' ? 'business' : 'personal'}`"></span>
+          </label>
+
+          <div class="todo-content">
+            <input type="text" v-model="todo.content">
+          </div>
+        </div>
+
+      </div>
+    </section>
   </main>
 </template>
