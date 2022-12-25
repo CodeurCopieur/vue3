@@ -10,6 +10,8 @@ const input_category = ref(null) // type de catégorie de la tâches (bussiness 
 const todo_asc = computed(() => todos.value.sort( (a,b ) => b.createdAt - a.createdAt))
 
 watch(name, newVal => localStorage.setItem('name', newVal)) // on observe name
+
+onMounted(() => name.value = localStorage.getItem('name') || '')
 </script>
 
 <template>
