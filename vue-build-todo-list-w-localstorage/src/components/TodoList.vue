@@ -1,11 +1,17 @@
 <script setup>
-// import { ref } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 
+const todos = ref([]) // tableau de tâches
+const name = ref('') // prénom du  user
 
+const input_content = ref('') // titre de la tâche
+const input_category = ref(null) // type de catégorie de la tâches (bussiness | personnel)
+
+const todo_asc = computed(() => todos.value.sort( (a,b ) => b.createdAt - a.createdAt))
+
+watch(name, newVal => localStorage.setItem('name', newVal)) // on observe name;
 </script>
 
 <template>
-  <div>
-    salut
-  </div>
+
 </template>
