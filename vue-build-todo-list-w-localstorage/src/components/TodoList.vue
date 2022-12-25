@@ -9,9 +9,15 @@ const input_category = ref(null) // type de catégorie de la tâches (bussiness 
 
 const todo_asc = computed(() => todos.value.sort( (a,b ) => b.createdAt - a.createdAt))
 
-watch(name, newVal => localStorage.setItem('name', newVal)) // on observe name;
+watch(name, newVal => localStorage.setItem('name', newVal)) // on observe name
 </script>
 
 <template>
-
+  <main class="app">
+    <section class="greeting">
+      <h2 class="title">
+        Quoi de neuf, <input type="text" placeholder="Nom ici ?" v-model="name">
+      </h2>
+    </section>
+  </main>
 </template>
