@@ -9,9 +9,13 @@ const input_category = ref(null) // type de catégorie de la tâches (bussiness 
 
 const todo_asc = computed(() => todos.value.sort( (a,b ) => b.createdAt - a.createdAt))
 
-watch(name, newVal => localStorage.setItem('name', newVal)) // on observe name
+watch(name, newVal => localStorage.setItem('name', newVal)) // on observe name et on insere dans le localstorage
 
-onMounted(() => name.value = localStorage.getItem('name') || '')
+onMounted(() => name.value = localStorage.getItem('name') || '') // au montage du DOM si dans le localstorage  la clé 'name' existe on affecte à la variable name la valeur de la clé 'name'
+
+const addTodo = () => {
+
+};
 </script>
 
 <template>
@@ -21,5 +25,6 @@ onMounted(() => name.value = localStorage.getItem('name') || '')
         Quoi de neuf, <input type="text" placeholder="Nom ici ?" v-model="name">
       </h2>
     </section>
+
   </main>
 </template>
