@@ -9,11 +9,37 @@
           @keypress.enter="addTask">
         <button>Ajout</button>
     </div>
+
+    <div class="tasks">
+      <!-- Component -->
+      <TaskListTasks 
+        v-for="(task, i) in tasks" 
+        :key="i"
+        :task="task"/>
+    </div>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+  data() {
+    return {
+      newTask: ''
+    }
+  },
+  methods: {
+    addTask() {
+      if (this.newTask) {
+        this.$store.commit('ADD_TASK', this.newTask);
+        this.newTask = '';
+      }
+    }
+
+  },
+  computed: {
+      tasks() {
+        return this.$store.state.tasks
+      }
+    }
 }
 </script>
