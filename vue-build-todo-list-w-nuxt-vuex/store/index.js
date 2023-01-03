@@ -12,7 +12,7 @@ export const mutations = {
   REMOVE_TASK(state, task) {
     state.tasks.splice(state.tasks.indexOf(task), 1)
   },
-  TOGGLE_TASK(task) {
+  TOGGLE_TASK(state, task) {
     task.done = !task.done
   }
 }
