@@ -1,11 +1,11 @@
 export const state = () => ({
-  task: []
+  tasks: []
 })
 
 
 export const mutations = {
   ADD_TASK(state, task) {
-    state.task = [{content: task, done: false}, ...state.tasks]
+    state.tasks = [{content: task, done: false}, ...state.tasks]
     // state.tasks.push({content: task, done: false})
     // state.tasks.unshift({content: task, done: false})
   },
